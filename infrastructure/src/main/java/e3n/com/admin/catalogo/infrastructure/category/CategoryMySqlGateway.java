@@ -7,13 +7,18 @@ import e3n.com.admin.catalogo.domain.pagination.Pagination;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
+import e3n.com.admin.catalogo.infrastructure.utils.SpecificationUtils;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 public class CategoryMySqlGateway implements CategoryGateway {
 
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
     public CategoryMySqlGateway(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
@@ -28,26 +33,60 @@ public class CategoryMySqlGateway implements CategoryGateway {
 
     @Override
     public void deleteById(CategoryID id) {
-
+        if (categoryRepository.existsById(id.getValue())){
+            categoryRepository.deleteById(id.getValue());
+        }
     }
 
     @Override
     public Optional<Category> findById(CategoryID id) {
-        return Optional.empty();
+        return categoryRepository.findById(id.getValue())
+                .map(CategoryJpaEntity::toAggregate);
     }
 
     @Override
     public Category update(Category category) {
-        return null;
+        return categoryRepository.save(CategoryJpaEntity.from(category))
+                .toAggregate();
     }
 
     @Override
     public Pagination<Category> findAll(SearchQuery query) {
-        return null;
+       PageRequest pageRequest = PageRequest.of(
+                query.page(),
+                query.perPage(),
+                Sort.by(Sort.Direction.fromString(query.direction()), query.sort())
+        );
+        final var specifications = Optional.ofNullable(query.terms())
+                .filter(str -> !str.isBlank())
+                .map(this::assembleSpecificcation)
+                .orElse(null);
+        final var pageResult = this.categoryRepository.findAll(Specification.where(specifications), pageRequest);
+
+        return new Pagination<>(
+                pageResult.getNumber(),
+                pageResult.getSize(),
+                pageResult.getTotalElements(),
+                pageResult.map(CategoryJpaEntity::toAggregate).toList()
+        );
     }
 
     @Override
     public List<CategoryID> existByIds(Iterable<CategoryID> ids) {
+//        final var categoryIds = StreamSupport.stream(ids.spliterator(), false)
+//                .map(CategoryID::getValue)
+//                .toList();
+//        return this.categoryRepository.existByIds(categoryIds)
+//                .stream()
+//                .map(CategoryID::from)
+//                .toList();
         return null;
     }
+
+    private Specification<CategoryJpaEntity> assembleSpecificcation(String str) {
+        final Specification<CategoryJpaEntity> nameLike = SpecificationUtils.like("name", str);
+        final Specification<CategoryJpaEntity> descriptionLike = SpecificationUtils.like("description", str);
+        return nameLike.or(descriptionLike);
+    }
+
 }

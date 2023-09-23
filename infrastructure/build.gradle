@@ -10,9 +10,9 @@ buildscript {
 plugins {
     id 'java'
     id 'application'
-    id 'org.springframework.boot' version '2.6.7'
+    id 'org.springframework.boot' version '2.7.7'
     id 'io.spring.dependency-management' version '1.1.0'
-    id 'org.flywaydb.flyway' version '8.5.10'
+    id 'org.flywaydb.flyway' version '9.11.0'
 }
 
 group = 'e3n.com.admin.catalogo.infraestructure'
@@ -39,6 +39,8 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.flywaydb:flyway-core')
+
     testRuntimeOnly('com.h2database:h2:2.2.220')
 
 }
