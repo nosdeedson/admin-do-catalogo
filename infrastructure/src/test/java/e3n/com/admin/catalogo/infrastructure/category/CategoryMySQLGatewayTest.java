@@ -185,4 +185,97 @@ public class CategoryMySQLGatewayTest {
 
     }
 
+    @Test
+    public void givenEmptyCategoriesTable_whenCallsFindAll_shouldReturnEmptyPage(){
+        final var expectedPage = 0;
+        final var expectedPerPage = 1;
+        final var expectedTotal = 0;
+        Assertions.assertEquals(0, categoryRepository.count());
+
+        final var query = new SearchQuery(0, 1, "", "name", "asc");
+        final var actualResult = categoryMySqlGateway.findAll(query);
+        Assertions.assertEquals(expectedPage, actualResult.currentPage());
+        Assertions.assertEquals(expectedPerPage, actualResult.perPage());
+        Assertions.assertEquals(0, actualResult.items().size());
+        Assertions.assertEquals(expectedTotal, actualResult.total());
+    }
+
+    @Test
+    public void givenFollowPagination_whenCallsFindAllWithPage1_shouldReturnPaginated(){
+        final var expectedPage = 1;
+        final var expectedPerPage = 1;
+        final var expectedTotal = 3;
+        final var filme = Category.newCategory("Filmes", "The category most watched", true);
+        final var serie = Category.newCategory("Series", "The most fun series", true);
+        final var documentary = Category.newCategory("Documentaries", "A vision of the reality", true);
+
+        categoryRepository.saveAllAndFlush(List.of(
+                CategoryJpaEntity.from(filme),
+                CategoryJpaEntity.from(serie),
+                CategoryJpaEntity.from(documentary)
+        ));
+
+        Assertions.assertEquals(3, categoryRepository.count());
+        final var query = new SearchQuery(1, 1, "", "name", "asc");
+
+        final var actualResult = categoryMySqlGateway.findAll(query);
+        Assertions.assertEquals(expectedPage, actualResult.currentPage());
+        Assertions.assertEquals(expectedPerPage, actualResult.perPage());
+        Assertions.assertEquals(1, actualResult.items().size());
+        Assertions.assertEquals(expectedTotal, actualResult.total());
+        Assertions.assertEquals(actualResult.items().get(0).getName(), filme.getName());
+        Assertions.assertEquals(actualResult.items().get(0).getId().getValue(), filme.getId().getValue());
+        Assertions.assertEquals(actualResult.items().get(0).getDescription(), filme.getDescription());
+    }
+
+    @Test
+    public void givenPrePersistedCategoriesAndDocAsTerms_whenCallsFindAllAndTermsMatchsCategoryName_shouldReturnPaginated(){
+        //TODO NOT WORKING
+        final var expectedPage = 1;
+        final var expectedPerPage = 10;
+        final var expectedTotal = 1;
+        final var filme = Category.newCategory("Filmes", "The category most watched", true);
+        final var serie = Category.newCategory("Series", "The most fun series", true);
+        final var documentary = Category.newCategory("Documentaries", "A vision of the reality", true);
+
+        categoryRepository.saveAllAndFlush(List.of(
+                CategoryJpaEntity.from(filme),
+                CategoryJpaEntity.from(serie),
+                CategoryJpaEntity.from(documentary)
+        ));
+
+        Assertions.assertEquals(3, categoryRepository.count());
+        final var query = new SearchQuery(1, 10, "doc", "name", "asc");
+        final var actualResult = categoryMySqlGateway.findAll(query);
+
+        Assertions.assertEquals(expectedPage, actualResult.currentPage());
+        Assertions.assertEquals(expectedPerPage, actualResult.perPage());
+        Assertions.assertEquals(expectedTotal, actualResult.total());
+
+    }
+
+    @Test
+    public void givenPrePersistedCategories_whenCallsExistsByIds_shouldReturnIds(){
+        final var filme = Category.newCategory("Filmes", "The category most watched", true);
+        final var serie = Category.newCategory("Series", "The most fun series", true);
+        final var documentary = Category.newCategory("Documentaries", "A vision of the reality", true);
+
+        Assertions.assertEquals(0, categoryRepository.count());
+
+        categoryRepository.saveAllAndFlush(List.of(
+                CategoryJpaEntity.from(filme),
+                CategoryJpaEntity.from(serie),
+                CategoryJpaEntity.from(documentary)
+        ));
+
+        Assertions.assertEquals(3, categoryRepository.count());
+
+        final var expectedIds= List.of(filme.getId(), serie.getId());
+        final var ids= List.of(filme.getId(), serie.getId(), CategoryID.from("123"));
+
+        final var actualResult = categoryMySqlGateway.existByIds(ids);
+        final var has = actualResult.containsAll(expectedIds);
+        Assertions.assertTrue(expectedIds.size() == actualResult.size() && has);
+
+    }
 }

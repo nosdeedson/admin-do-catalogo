@@ -12,6 +12,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -72,15 +76,12 @@ public class CategoryMySqlGateway implements CategoryGateway {
     }
 
     @Override
-    public List<CategoryID> existByIds(Iterable<CategoryID> ids) {
-//        final var categoryIds = StreamSupport.stream(ids.spliterator(), false)
-//                .map(CategoryID::getValue)
-//                .toList();
-//        return this.categoryRepository.existByIds(categoryIds)
-//                .stream()
-//                .map(CategoryID::from)
-//                .toList();
-        return null;
+    public List<CategoryID> existByIds(List<CategoryID> ids) {
+        List<String> idsBD = this.categoryRepository.existeByIds(ids.stream().map(CategoryID::getValue).toList());
+        return idsBD
+                .stream()
+                .map(CategoryID::from)
+                .toList();
     }
 
     private Specification<CategoryJpaEntity> assembleSpecificcation(String str) {

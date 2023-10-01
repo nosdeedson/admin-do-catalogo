@@ -23,7 +23,7 @@ public class Main {
         SpringApplication.run(WebServerConfig.class, args);
     }
 
-    @Bean
+    //@Bean
     public ApplicationRunner runner(CategoryRepository repository){
         return args -> {
             List<CategoryJpaEntity> all = repository.findAll();

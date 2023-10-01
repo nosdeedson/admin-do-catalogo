@@ -6,12 +6,14 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<CategoryJpaEntity, String> {
+
     Page<CategoryJpaEntity> findAll(Specification<CategoryJpaEntity> whereClause, Pageable pageable);
 
-//    @Query(value = "select c.id from Category c where c.id in :ids")
-//    List<String> existByIds(@Param("ids") List<String> ids);
+    @Query(value = "select c.id from CategoryJpaEntity c where c.id in :ids")
+    List<String> existeByIds(@Param("ids") List<String> ids);
 }

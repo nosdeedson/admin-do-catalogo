@@ -7,7 +7,10 @@ public class SpecificationUtils {
     private SpecificationUtils() {
     }
 
-    public static <T>Specification<T> like(final String prop, final String term){
-        return ((root, query, criteriaBuilder) -> criteriaBuilder.like(criteriaBuilder.upper(root.get(prop)), SqlUtils.like(term)));
+    public static <T> Specification<T> like(final String prop, final String term) {
+        final var termToUpperCase = SqlUtils.upper(term);
+
+        Specification<T> specification = (root, query, cb) -> cb.like(cb.upper(root.get(prop)), SqlUtils.like(termToUpperCase));
+        return specification;
     }
 }
