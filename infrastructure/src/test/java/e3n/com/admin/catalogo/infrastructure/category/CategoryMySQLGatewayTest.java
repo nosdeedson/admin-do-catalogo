@@ -3,7 +3,7 @@ package e3n.com.admin.catalogo.infrastructure.category;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
-import e3n.com.admin.catalogo.infrastructure.MySQLGatewayTest;
+import e3n.com.admin.catalogo.MySQLGatewayTest;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;

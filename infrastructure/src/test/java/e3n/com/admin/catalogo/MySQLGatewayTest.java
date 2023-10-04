@@ -1,10 +1,12 @@
-package e3n.com.admin.catalogo.infrastructure;
+package e3n.com.admin.catalogo;
 
 
+import e3n.com.admin.catalogo.infrastructure.configuration.WebServerConfig;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.data.repository.CrudRepository;
@@ -18,27 +20,16 @@ import java.util.Collection;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @ActiveProfiles("development")
-@DataJpaTest
 @ComponentScan(
+        basePackages = "com.fullcycle.admin.catalogo",
+        useDefaultFilters = false,
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*MySqlGateway")
         }
 )
-@ExtendWith(MySQLGatewayTest.CleanUpExtension.class)
+@SpringBootTest(classes = WebServerConfig.class)
+@DataJpaTest
+@ExtendWith(CleanUpExtension.class)
 public @interface MySQLGatewayTest {
-
-    class CleanUpExtension implements BeforeEachCallback {
-
-        @Override
-        public void beforeEach(final ExtensionContext context) throws Exception {
-            final  var repositories = SpringExtension.getApplicationContext(context)
-                    .getBeansOfType(CrudRepository.class)
-                    .values();
-            cleanUp(repositories);
-        }
-
-        private void cleanUp(Collection<CrudRepository> repositories){
-            repositories.forEach(CrudRepository::deleteAll);
-        }
-    }
 }
+
