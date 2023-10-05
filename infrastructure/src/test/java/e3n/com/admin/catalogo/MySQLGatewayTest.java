@@ -24,7 +24,7 @@ import java.util.Collection;
         basePackages = "com.fullcycle.admin.catalogo",
         useDefaultFilters = false,
         includeFilters = {
-                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*MySqlGateway")
+                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".[MySqlGateway]")
         }
 )
 @SpringBootTest(classes = WebServerConfig.class)

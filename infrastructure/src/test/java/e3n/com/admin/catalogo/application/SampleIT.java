@@ -8,19 +8,20 @@ import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryReposi
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
-@MySQLGatewayTest
+@IntegrationTest
 public class SampleIT {
 
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Autowired
+    @MockBean
     private CreateCategoryUseCase useCase;
 
     @Test
     public void test(){
         Assertions.assertNotNull(categoryRepository);
-       // Assertions.assertNotNull(useCase);
+       Assertions.assertNotNull(useCase);
     }
 }
