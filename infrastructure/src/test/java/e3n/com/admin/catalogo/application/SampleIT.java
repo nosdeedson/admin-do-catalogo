@@ -16,7 +16,7 @@ public class SampleIT {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @MockBean
+    @Autowired
     private CreateCategoryUseCase useCase;
 
     @Test

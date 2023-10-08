@@ -3,11 +3,9 @@ package e3n.com.admin.catalogo.application.category.create;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.domain.validation.handler.Notification;
-import io.vavr.API;
 import io.vavr.control.Either;
-import io.vavr.control.Try;
 
-import static io.vavr.control.Either.*;
+import static io.vavr.API.*;
 
 public class DefaultCreateCategoryUseCase extends CreateCategoryUseCase{
     private final CategoryGateway categoryGateway;
@@ -25,11 +23,13 @@ public class DefaultCreateCategoryUseCase extends CreateCategoryUseCase{
                 createCategoryCommand.isActive());
         category.validate(notification);
 
-        return notification.hasError() ? API.Left(notification): create(category);
+        // Left from the api io.vavr.control.Either;
+        return notification.hasError() ? Left(notification): create(category);
     }
 
     private Either<Notification, CreateCategoryOutput> create(Category category) {
-        return API.Try(
+        // try from the api io.vavr.control.Either;
+        return Try(
                 () -> this.categoryGateway.create(category))
                 .toEither()
                 .bimap(Notification::create, CreateCategoryOutput::from);

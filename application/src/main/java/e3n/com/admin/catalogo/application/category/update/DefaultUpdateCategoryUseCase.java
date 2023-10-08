@@ -4,6 +4,7 @@ import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.exceptions.DomainException;
+import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
 import e3n.com.admin.catalogo.domain.validation.Error;
 import e3n.com.admin.catalogo.domain.validation.handler.Notification;
 import io.vavr.API;
@@ -22,7 +23,7 @@ public class DefaultUpdateCategoryUseCase extends UpdateCategoryUseCase{
     @Override
     public Either<Notification, UpdateCategoryOutput> execute(UpdateCategoryCommand updateCategoryCommand) {
         final var category = this.categoryGateway.findById(CategoryID.from(updateCategoryCommand.id()))
-                .orElseThrow(() -> DomainException.with(new Error("Category with id %s was not found".formatted(updateCategoryCommand.id()))));
+                .orElseThrow(() -> NotFoundException.with(new Error("Category with id %s was not found".formatted(updateCategoryCommand.id()))));
         final var notification = Notification.create();
 
         category.update(updateCategoryCommand.name(), updateCategoryCommand.description(), updateCategoryCommand.active())
