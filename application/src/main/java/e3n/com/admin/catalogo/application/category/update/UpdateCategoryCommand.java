@@ -4,15 +4,15 @@ public record UpdateCategoryCommand(
         String id,
         String name,
         String description,
-        boolean active
+        boolean isActive
 ) {
 
     public static UpdateCategoryCommand wit(
             final String id,
             final String name,
             final String description,
-            final boolean active
+            final boolean isActive
     ){
-        return new UpdateCategoryCommand(id, name, description, active);
+        return new UpdateCategoryCommand(id, name, description, isActive);
     }
 }

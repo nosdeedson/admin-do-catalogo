@@ -26,7 +26,7 @@ public class DefaultUpdateCategoryUseCase extends UpdateCategoryUseCase{
                 .orElseThrow(() -> NotFoundException.with(new Error("Category with id %s was not found".formatted(updateCategoryCommand.id()))));
         final var notification = Notification.create();
 
-        category.update(updateCategoryCommand.name(), updateCategoryCommand.description(), updateCategoryCommand.active())
+        category.update(updateCategoryCommand.name(), updateCategoryCommand.description(), updateCategoryCommand.isActive())
                 .validate(notification);
         return notification.hasError() ? API.Left(notification): update(category);
     }

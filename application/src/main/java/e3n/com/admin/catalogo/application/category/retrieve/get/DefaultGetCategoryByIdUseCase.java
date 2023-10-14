@@ -18,6 +18,6 @@ public class DefaultGetCategoryByIdUseCase extends GetCategoryByIdUseCase{
     public CategoryOutput execute(String id) {
         return this.categoryGateway.findById(CategoryID.from(id))
                 .map(CategoryOutput::from)
-                .orElseThrow(() -> NotFoundException.with(new Error("Category with the Id %s was not found".formatted(id))));
+                .orElseThrow(() -> NotFoundException.with(new Error("Category with ID " + id + " was not found")));
     }
 }
