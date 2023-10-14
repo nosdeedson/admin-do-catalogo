@@ -209,7 +209,6 @@ public class CategoryAPITest {
 
     @Test
     public void givenAInvalidId_whenCallsGetCategory_shouldReturnNotFound() throws Exception{
-        // TODO NOT WORKING
         final var expectedErrorMessage = "Category with ID 123 was not found";
         final var expectedId = CategoryID.from("123");
 
@@ -265,7 +264,6 @@ public class CategoryAPITest {
         final var expectedName = "Filmes";
         final var expectedDescription = "a";
         final var expectedIsActive = true;
-        // TODO WORKING USE AS EXAMPLE
         final var expectedErrorCount = 1;
         final var expectedErrorMessage = "'name' should not be null";
 
@@ -301,7 +299,6 @@ public class CategoryAPITest {
         final var expectedName = "Filmes";
         final var expectedDescription = "a";
         final var expectedIsActive = true;
-    // TODO NOT WORKING
         final var expetedErrorMesage = "Category with ID not-found was not found";
 
         Mockito.when(updateCategoryUseCase.execute(Mockito.any()))

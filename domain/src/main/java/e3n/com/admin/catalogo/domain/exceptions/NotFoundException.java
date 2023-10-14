@@ -17,7 +17,7 @@ public class NotFoundException extends DomainException{
             final Class<? extends AggregateRoot<?>> anAggregate,
             final Identifier id
             ){
-        final var error = "%s with the ID $s was not found".formatted(
+        final var error = "%s with ID %s was not found".formatted(
                 anAggregate.getSimpleName(),
                 id.getValue()
         );
