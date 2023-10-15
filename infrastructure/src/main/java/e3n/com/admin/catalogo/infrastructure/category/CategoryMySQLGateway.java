@@ -13,20 +13,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 @Component
-public class CategoryMySqlGateway implements CategoryGateway {
+public class CategoryMySQLGateway implements CategoryGateway {
 
     private final CategoryRepository categoryRepository;
 
-    public CategoryMySqlGateway(CategoryRepository categoryRepository) {
+    public CategoryMySQLGateway(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 

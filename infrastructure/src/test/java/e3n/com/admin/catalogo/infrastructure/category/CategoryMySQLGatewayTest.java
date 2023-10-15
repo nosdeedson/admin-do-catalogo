@@ -1,27 +1,44 @@
 package e3n.com.admin.catalogo.infrastructure.category;
 
+import e3n.com.admin.catalogo.MYSQLGatewayTest;
+import e3n.com.admin.catalogo.MySqlCleanUpExtension;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
-import e3n.com.admin.catalogo.MySQLGatewayTest;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 import java.util.Optional;
 
-
-@MySQLGatewayTest
+//@ActiveProfiles("test-integration")
+//@DataJpaTest
+//@ComponentScan(includeFilters = {
+//        @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*MySQLGateway")
+//})
+//@ExtendWith(MySqlCleanUpExtension.class)
+@MYSQLGatewayTest
 public class CategoryMySQLGatewayTest {
 
     @Autowired
-    private CategoryMySqlGateway categoryMySqlGateway;
+    private CategoryMySQLGateway categoryMySqlGateway;
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Test
+    public void testOK(){
+        Assertions.assertNotNull(categoryRepository);
+        Assertions.assertNotNull(categoryMySqlGateway);
+    }
 
     @Test
     public void givenAValidCategory_whenCallsCreate_shouldReturnANewCategory(){
@@ -108,7 +125,7 @@ public class CategoryMySQLGatewayTest {
         final var category = Category.newCategory(expectedName, expectedDescription, expectedActive);
 
         categoryMySqlGateway.create(category);
-        Assertions.assertEquals(0, categoryRepository.count());
+        Assertions.assertEquals(1, categoryRepository.count());
         final var categoryJpa = categoryRepository.findById(category.getId().getValue()).orElseThrow();
 
         Assertions.assertEquals(1, categoryRepository.count());
