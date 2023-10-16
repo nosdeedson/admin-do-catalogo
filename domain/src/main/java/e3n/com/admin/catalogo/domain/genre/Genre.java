@@ -9,6 +9,7 @@ import e3n.com.admin.catalogo.domain.validation.handler.Notification;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Genre extends AggregateRoot<GenreId> {
@@ -86,7 +87,7 @@ public class Genre extends AggregateRoot<GenreId> {
             deactivate();
         }
         this.name = name;
-        this.categories = new ArrayList<>(categories);
+        this.categories = new ArrayList<>(categories != null ? categories : Collections.emptyList());
         this.updatedAt = InstantUtils.now();
         selValidate();
         return this;
@@ -149,7 +150,7 @@ public class Genre extends AggregateRoot<GenreId> {
         return this;
     }
 
-    private Genre addCategories(final List<CategoryID> categories){
+    public Genre addCategories(final List<CategoryID> categories){
         if (categories == null || categories.isEmpty()){
             return this;
         }
@@ -158,7 +159,7 @@ public class Genre extends AggregateRoot<GenreId> {
         return this;
     }
 
-    private Genre removeCategory(final CategoryID categoryID){
+    public Genre removeCategory(final CategoryID categoryID){
         if (categoryID == null){
             return this;
         }
