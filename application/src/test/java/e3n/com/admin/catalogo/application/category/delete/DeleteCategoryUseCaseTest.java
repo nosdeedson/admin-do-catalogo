@@ -11,6 +11,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import java.util.List;
+
 public class DeleteCategoryUseCaseTest extends UseCaseTest {
 
     @InjectMocks
@@ -19,9 +21,9 @@ public class DeleteCategoryUseCaseTest extends UseCaseTest {
     @Mock
     private CategoryGateway categoryGateway;
 
-    @BeforeEach
-    public void cleanUp(){
-        Mockito.reset(categoryGateway);
+    @Override
+    protected List<Object> getMocks() {
+        return List.of(categoryGateway);
     }
 
     @Test

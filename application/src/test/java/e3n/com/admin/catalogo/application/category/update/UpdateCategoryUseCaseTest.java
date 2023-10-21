@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -23,9 +24,9 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
     @InjectMocks
     private DefaultUpdateCategoryUseCase useCase;
 
-    @BeforeEach
-    public void cleanUp(){
-        Mockito.reset(categoryGateway);
+    @Override
+    protected List<Object> getMocks() {
+        return List.of(categoryGateway);
     }
 
     // 1. Teste do caminho feliz

@@ -12,6 +12,7 @@ import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.SimpleTimeZone;
 
@@ -23,9 +24,9 @@ public class CreateCategoryUseCaseTest extends UseCaseTest {
     @Mock
     private CategoryGateway categoryGateway;
 
-    @BeforeEach
-    public void cleanUp(){
-        Mockito.reset(categoryGateway);
+    @Override
+    protected List<Object> getMocks() {
+        return List.of(categoryGateway);
     }
 
     @Test
@@ -127,4 +128,5 @@ public class CreateCategoryUseCaseTest extends UseCaseTest {
                                 && Objects.isNull(category.getDeletedAt())
                         ));
     }
+
 }
