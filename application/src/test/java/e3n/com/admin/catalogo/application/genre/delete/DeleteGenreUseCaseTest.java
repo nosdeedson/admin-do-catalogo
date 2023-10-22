@@ -1,10 +1,7 @@
 package e3n.com.admin.catalogo.application.genre.delete;
 
 import e3n.com.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.application.genre.create.DefaultCreateGenreUseCase;
 import e3n.com.admin.catalogo.application.genre.delelte.DefaultDeleteGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
 import e3n.com.admin.catalogo.domain.genre.GenreId;
@@ -16,7 +13,7 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
-public class DeleteCategoryUseCaseTest extends UseCaseTest {
+public class DeleteGenreUseCaseTest extends UseCaseTest {
 
     @InjectMocks
     private DefaultDeleteGenreUseCase useCase;
