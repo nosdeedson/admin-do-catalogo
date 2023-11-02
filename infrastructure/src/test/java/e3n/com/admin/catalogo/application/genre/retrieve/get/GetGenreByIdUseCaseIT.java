@@ -49,9 +49,9 @@ public class GetGenreByIdUseCaseIT {
         Assertions.assertTrue(expectedCategories.size() == output.categories().size());
         Assertions.assertEquals(expectedName, output.name());
         Assertions.assertEquals(expectedIsActive, output.isActive());
-        Assertions.assertNotNull(output.created_at());
-        Assertions.assertNotNull(output.updated_at());
-        Assertions.assertNull(output.deleted_at());
+        Assertions.assertNotNull(output.createdAt());
+        Assertions.assertNotNull(output.updatedAt());
+        Assertions.assertNull(output.deletedAt());
 
     }
 

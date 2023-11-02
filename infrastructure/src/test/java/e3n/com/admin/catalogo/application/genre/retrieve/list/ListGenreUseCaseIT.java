@@ -1,7 +1,6 @@
 package e3n.com.admin.catalogo.application.genre.retrieve.list;
 
 import e3n.com.admin.catalogo.IntegrationTest;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
@@ -38,7 +37,7 @@ public class ListGenreUseCaseIT {
         final var expectedDirection = "asc";
         final var expectedTotal = 2;
 
-        final var expectedItems = genres.stream().map(GenreLIstOutput::from).toList();
+        final var expectedItems = genres.stream().map(GenreListOutput::from).toList();
 
         final var query = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
@@ -61,7 +60,7 @@ public class ListGenreUseCaseIT {
         final var expectedDirection = "asc";
         final var expectedTotal = 0;
 
-        final var expectedItems = List.<GenreLIstOutput>of();
+        final var expectedItems = List.<GenreListOutput>of();
 
         final var query = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 

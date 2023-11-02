@@ -29,7 +29,7 @@ public class DefaultCreateGenreUseCase extends CreateGenreUseCase{
 
         final var notification = Notification.create();
         notification.append(validateCategories(toCategoryId(createGenreCommand.categories())));
-        final var genre = notification.validate(() -> Genre.newGenre(createGenreCommand.name(), createGenreCommand.isActive()));
+        final var genre = notification.validate(() -> Genre.newGenre(createGenreCommand.name(), createGenreCommand.active()));
 
         if (notification.hasError()){
             throw new NotificationException("Could not create Aggreate Genre", notification);

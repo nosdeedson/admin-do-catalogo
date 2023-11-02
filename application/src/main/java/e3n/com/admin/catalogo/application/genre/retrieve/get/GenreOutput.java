@@ -11,9 +11,9 @@ public record GenreOutput(
         String name,
         boolean isActive,
         List<String> categories,
-        Instant created_at,
-        Instant updated_at,
-        Instant deleted_at
+        Instant createdAt,
+        Instant updatedAt,
+        Instant deletedAt
 ) {
     public static GenreOutput from(final Genre genre){
         return new GenreOutput(

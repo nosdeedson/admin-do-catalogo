@@ -41,7 +41,7 @@ public class ListGenreUseCaseTest extends UseCaseTest {
         final var expectedTotal = 2;
 
         final var expectedItems = genres.stream()
-                .map(GenreLIstOutput::from)
+                .map(GenreListOutput::from)
                 .toList();
 
         final var expectedPagination = new Pagination<>(
@@ -77,7 +77,7 @@ public class ListGenreUseCaseTest extends UseCaseTest {
         final var expectedDirection = "asc";
         final var expectedTotal = 2;
 
-        final var expectedItems = List.<GenreLIstOutput>of();
+        final var expectedItems = List.<GenreListOutput>of();
 
         final var expectedPagination = new Pagination<>(
                 expectedPage,

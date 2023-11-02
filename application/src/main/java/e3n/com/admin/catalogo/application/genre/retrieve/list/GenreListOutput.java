@@ -6,7 +6,7 @@ import e3n.com.admin.catalogo.domain.genre.Genre;
 import java.time.Instant;
 import java.util.List;
 
-public record GenreLIstOutput(
+public record GenreListOutput(
         String id,
         String name,
         boolean isActive,
@@ -15,8 +15,8 @@ public record GenreLIstOutput(
         Instant deletedAt
 ) {
 
-    public static  GenreLIstOutput from(final Genre genre){
-        return new GenreLIstOutput(
+    public static GenreListOutput from(final Genre genre){
+        return new GenreListOutput(
                 genre.getId().getValue(),
                 genre.getName(),
                 genre.isActive(),

@@ -4,15 +4,15 @@ import java.util.List;
 
 public record CreateGenreCommand(
         String name,
-        boolean isActive,
+        boolean active,
         List<String> categories
 ) {
 
     public static CreateGenreCommand with(
             final String name,
-            final Boolean isActive,
+            final Boolean active,
             final List<String> categories
     ){
-        return new CreateGenreCommand(name, isActive == null || isActive, categories);
+        return new CreateGenreCommand(name, active == null || active, categories);
     }
 }

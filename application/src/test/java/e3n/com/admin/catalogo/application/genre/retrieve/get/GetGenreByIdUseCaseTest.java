@@ -51,8 +51,8 @@ public class GetGenreByIdUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(expectedName, output.name());
         Assertions.assertEquals(expectedId.getValue(), output.id());
         Assertions.assertEquals(expectedIsActive, output.isActive());
-        Assertions.assertNotNull(output.created_at());
-        Assertions.assertNull(output.deleted_at());
+        Assertions.assertNotNull(output.createdAt());
+        Assertions.assertNull(output.deletedAt());
         Assertions.assertEquals(expectedCategories.stream().map(CategoryID::getValue).toList(), output.categories());
 
         Mockito.verify(genreGateway, Mockito.times(1)).findById(expectedId);
