@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.util.List;
+import java.util.function.Function;
 
 @IntegrationTest
 public class UpdateGenreUseCaseIT {
@@ -43,7 +44,7 @@ public class UpdateGenreUseCaseIT {
         final var expectedCategories = List.<CategoryID>of();
         final var expectedId = genre.getId();
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, asString(expectedCategories));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -76,7 +77,7 @@ public class UpdateGenreUseCaseIT {
         final var expectedId = genre.getId();
         final var expectedCategories = List.of(filmes.getId(), series.getId());
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, asString(expectedCategories));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -108,7 +109,7 @@ public class UpdateGenreUseCaseIT {
         final var expectedId = genre.getId();
         final var expectedCategories = List.of(filmes.getId(), series.getId());
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, asString(expectedCategories));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -135,7 +136,7 @@ public class UpdateGenreUseCaseIT {
         final var expectedErroMessage = "'name' should not be empty";
         final var expectedErroCount = 1;
 
-        final var command = UpdateGenreCommand.from(genre.getId().getValue(), " ", true, asString(List.<CategoryID>of()));
+        final var command = UpdateGenreCommand.from(genre.getId().getValue(), " ", true, mapTo(List.<CategoryID>of(), CategoryID::getValue));
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
 
@@ -166,7 +167,8 @@ public class UpdateGenreUseCaseIT {
         final var expectedErroCount = 2;
         final var expectedId = genre.getId();
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, asString(expectedCategories));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive,
+                mapTo(expectedCategories, CategoryID::getValue));
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
 
@@ -181,7 +183,16 @@ public class UpdateGenreUseCaseIT {
         Mockito.verify(genreGateway, Mockito.times(0)).update(Mockito.any());
     }
 
-    private List<String> asString(List<CategoryID> ids){
-        return ids.stream().map(CategoryID::getValue).toList();
+    /**
+     * List<D> D is the type of the list that will be returned
+     * @param actual current type of the list
+     * @param mapper  function that
+     * @return type of D
+     * @param <A> type of the object (atribute) of the list that will receive
+     * @param <D> type of the object (attribute) of the list that will be returned
+     *
+     */
+    private <A, D> List<D> mapTo(List<A> actual, Function<A, D> mapper){
+        return actual.stream().map(mapper).toList();
     }
 }

@@ -16,6 +16,7 @@ import org.mockito.Mockito;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class UpdateGenreUseCaseTest extends UseCaseTest {
 
@@ -42,7 +43,8 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         final var expectedId = genre.getId();
         final var expectedCategories = List.<CategoryID>of();
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, asString(expectedCategories));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName,
+                expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
 
         Mockito.when(genreGateway.findById(Mockito.any()))
                 .thenReturn(Optional.of(Genre.with(genre)));
@@ -80,7 +82,8 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         final var expectedIsActive = true;
         final var expectedId = genre.getId();
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, asString(expectedCategories));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName,
+                expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
 
         Mockito.when(categoryGateway.existByIds(Mockito.any()))
                 .thenReturn(expectedCategories);
@@ -104,7 +107,6 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
                 Objects.equals(expectedId.getValue(), update.getId().getValue())
                         && Objects.equals(expectedIsActive, update.isActive())
                         && Objects.equals(expectedName, update.getName())
-                        && Objects.equals(expectedCategories, update.getCategories())
                         && Objects.equals(genre.getCreatedAt(), update.getCreatedAt())
                         && genre.getUpdatedAt().isBefore(update.getUpdatedAt())
                         && Objects.equals(expectedCategories, update.getCategories())
@@ -121,7 +123,8 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         final var expectedId = genre.getId();
         final var expectedCategories = List.<CategoryID>of();
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, asString(expectedCategories));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName,
+                expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
 
         Mockito.when(genreGateway.findById(Mockito.any()))
                 .thenReturn(Optional.of(Genre.with(genre)));
@@ -164,7 +167,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
                 expectedId.getValue(),
                 null,
                 expectedIsActive,
-                asString(expectedCategories)
+                mapTo(expectedCategories, CategoryID::getValue)
         );
 
         Mockito.when(genreGateway.findById(Mockito.any()))
@@ -202,7 +205,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
                 expectedId.getValue(),
                 null,
                 expectedIsActive,
-                asString(expectedCategories)
+                mapTo(expectedCategories, CategoryID::getValue)
         );
 
         Mockito.when(categoryGateway.existByIds(Mockito.any()))
@@ -225,7 +228,16 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
 
     }
 
-    private List<String> asString(List<CategoryID> ids) {
-        return ids.stream().map(CategoryID::getValue).toList();
+    /**
+     * List<D> D is the type of the list that will be returned
+     * @param actual current type of the list
+     * @param mapper  function that
+     * @return type of D
+     * @param <A> type of the object (atribute) of the list that will receive
+     * @param <D> type of the object (attribute) of the list that will be returned
+     *
+     */
+    private <A, D> List<D> mapTo(final List<A> actual, Function<A, D> mapper){
+        return actual.stream().map(mapper).toList();
     }
 }
