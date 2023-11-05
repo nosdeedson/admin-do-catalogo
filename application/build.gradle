@@ -15,6 +15,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.mockito:mockito-junit-jupiter:4.5.1'
     implementation 'io.vavr:vavr:0.10.4'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
 }
 
 test {

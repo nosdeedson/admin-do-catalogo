@@ -9,7 +9,7 @@ import e3n.com.admin.catalogo.domain.validation.Validator;
 public class CastMemberValidator extends Validator {
 
     private static final int NAME_MAX_LENGTH = 255;
-    private static final int NAME_MIN_LEGTH = 3;
+    private static final int NAME_MIN_LENGTH = 3;
 
     private final CastMember castMember;
 
@@ -22,15 +22,16 @@ public class CastMemberValidator extends Validator {
     public void validate() {
         // TODO
         //  MAYBE I SHOULD CREATE A PRIVATE METHOD HERE IF THE GENERIC DON'T WORK
-        Error error = StringUtils.checkNameConstraints(castMember.getName(), NAME_MAX_LENGTH, NAME_MIN_LEGTH);
+        Error error = StringUtils.checkNameConstraints(castMember.getName(), NAME_MAX_LENGTH, NAME_MIN_LENGTH);
         if (error != null){
             this.validationHandler().append(error);
         }
-        //checkNameConstrants();
-        checkTypeConstrants();
+        //checkNameConstraints();
+        checkTypeConstraints();
     }
 
-    private void checkTypeConstrants(){
+
+    private void checkTypeConstraints(){
         if (this.castMember.getType() == null){
             this.validationHandler().append(new Error("'type' should not be null"));
         }
