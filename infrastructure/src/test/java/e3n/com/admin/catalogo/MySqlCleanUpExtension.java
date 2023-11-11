@@ -1,5 +1,6 @@
 package e3n.com.admin.catalogo;
 
+import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberRepository;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
@@ -19,6 +20,7 @@ public class MySqlCleanUpExtension implements BeforeEachCallback {
         final var appContext = SpringExtension.getApplicationContext(context);
 
         cleanUp(List.of(
+                appContext.getBean(CastMemberRepository.class),
                 appContext.getBean(GenreRepository.class),
                 appContext.getBean(CategoryRepository.class)
         ));

@@ -1,4 +1,4 @@
-package e3n.com.admin.catalogo.application.castmember.create.delete;
+package e3n.com.admin.catalogo.application.castmember.delete;
 
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
