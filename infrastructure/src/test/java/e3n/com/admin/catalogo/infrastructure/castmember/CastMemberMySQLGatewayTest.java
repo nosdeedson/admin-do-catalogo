@@ -5,6 +5,7 @@ import e3n.com.admin.catalogo.MYSQLGatewayTest;
 import e3n.com.admin.catalogo.domain.castmember.CastMember;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
+import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberRepository;
 import org.junit.jupiter.api.Assertions;
@@ -103,10 +104,8 @@ public class CastMemberMySQLGatewayTest {
         repository.save(CastMemberJpaEntity.from(member));
         Assertions.assertEquals(1, repository.count());
 
-        final var test = repository.findById(expectedId.getValue()).get();
+        // TODO ERRO DO ID INCLUINDO ESPAÇO
         final var ids = gateway.existsByIds(List.of(CastMemberID.from("123"), expectedId));
-        System.out.println(expectedId.getValue()+"-");
-        System.out.println(ids.get(0).getValue()+"-");
 
         Assertions.assertEquals(expectedItemsCount, ids.size());
         Assertions.assertEquals(expectedId.getValue(), ids.get(0).getValue());
@@ -114,28 +113,97 @@ public class CastMemberMySQLGatewayTest {
 
     @Test
     public void givenAValidCastMember_whenCallsDeleteById_shouldDeleteIt() {
+        final var expectedName = "Eva Mendes";
+        final var expectedType = CastMemberType.ACTRESS;
+
+        final var member = CastMember.newMember(expectedName, expectedType);
+        final var expectedId = member.getId();
+
+        Assertions.assertEquals(0, repository.count());
+
+        repository.save(CastMemberJpaEntity.from(member));
+        Assertions.assertEquals(1, repository.count());
+
+        Assertions.assertDoesNotThrow(() -> gateway.deleteById(expectedId));
+
+        Assertions.assertEquals(0, repository.count());
 
     }
 
     @Test
     public void givenAnInvalidId_whenCallsDeleteById_shouldBeIgnored() {
+        final var expectedName = "Eva Mendes";
+        final var expectedType = CastMemberType.ACTRESS;
 
+        final var member = CastMember.newMember(expectedName, expectedType);
+        final var expectedId = CastMemberID.from("123");
+
+        Assertions.assertEquals(0, repository.count());
+
+        repository.save(CastMemberJpaEntity.from(member));
+        Assertions.assertEquals(1, repository.count());
+
+        Assertions.assertDoesNotThrow(() -> gateway.deleteById(expectedId));
+
+        Assertions.assertEquals(1, repository.count());
     }
 
     @Test
     public void givenAValidCastMember_whenCallsFindById_shouldReturnIt() {
+        final var expectedName = "Eva Mendes";
+        final var expectedType = CastMemberType.ACTRESS;
 
+        final var member = CastMember.newMember(expectedName, expectedType);
+        final var expectedId = member.getId();
+
+        Assertions.assertEquals(0, repository.count());
+
+        repository.save(CastMemberJpaEntity.from(member));
+        Assertions.assertEquals(1, repository.count());
+
+        final var memberFromBD = gateway.findById(expectedId).get();
+
+        Assertions.assertEquals(expectedId, memberFromBD.getId());
+        Assertions.assertEquals(expectedName, memberFromBD.getName());
+        Assertions.assertEquals(expectedType, memberFromBD.getType());
+        Assertions.assertEquals(member.getCreatedAt(), memberFromBD.getCreatedAt());
+        Assertions.assertEquals(member.getUpdatedAt(), memberFromBD.getUpdatedAt());
 
     }
 
     @Test
     public void givenAnInvalidId_whenCallsFindById_shouldReturnEmpty() {
+        final var expectedName = "Eva Mendes";
+        final var expectedType = CastMemberType.ACTRESS;
 
+        final var member = CastMember.newMember(expectedName, expectedType);
+        final var expectedId = CastMemberID.from("123");
+
+        Assertions.assertEquals(0, repository.count());
+
+        repository.save(CastMemberJpaEntity.from(member));
+        Assertions.assertEquals(1, repository.count());
+
+        final var memberFromBD = gateway.findById(expectedId);
+        Assertions.assertTrue(memberFromBD.isEmpty());
     }
 
     @Test
     public void givenEmptyCastMembers_whenCallsFindAll_shouldReturnEmpty() {
+        final var expectedPage = 0;
+        final var expectedPerPage = 10;
+        final var expectedTerms = "";
+        final var expectedSort = "name";
+        final var expectedDirection = "asc";
+        final var expectedTotal = 0;
+        final var expectedItemsCount = 0;
+        final var query = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
+        final var results = gateway.findAll(query);
+        Assertions.assertEquals(expectedPage, results.currentPage());
+        Assertions.assertEquals(expectedPerPage, results.perPage());
+        Assertions.assertEquals(expectedTotal, results.total());
+        Assertions.assertEquals(expectedItemsCount, results.items().size());
     }
 
     @ParameterizedTest
@@ -153,7 +221,22 @@ public class CastMemberMySQLGatewayTest {
             final int expectedItemsCount,
             final long expectedTotal,
             final String expectedName
-    ) {}
+    ) {
+
+        mockMembers();
+        final var expectedSort = "name";
+        final var expectedDirection = "asc";
+        final var query = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+
+        final var results = gateway.findAll(query);
+        Assertions.assertEquals(expectedPage, results.currentPage() );
+        Assertions.assertEquals(expectedPerPage, results.perPage() );
+        Assertions.assertEquals(expectedTotal, results.total() );
+        Assertions.assertEquals(expectedItemsCount, results.items().size() );
+        Assertions.assertEquals(expectedPage, results.currentPage() );
+        Assertions.assertEquals(expectedName, results.items().get(0).getName() );
+
+    }
 
     @ParameterizedTest
     @CsvSource({
@@ -170,7 +253,19 @@ public class CastMemberMySQLGatewayTest {
             final int expectedItemsCount,
             final long expectedTotal,
             final String expectedName
-    ) {}
+    ) {
+        mockMembers();
+        final var expectedTerms = "";
+        final var query = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+
+        final var results = gateway.findAll(query);
+        Assertions.assertEquals(expectedItemsCount, results.items().size());
+        Assertions.assertEquals(expectedTotal, results.total());
+        Assertions.assertEquals(expectedName, results.items().get(0).getName());
+        Assertions.assertEquals(expectedPage, results.currentPage());
+        Assertions.assertEquals(expectedPerPage, results.perPage());
+
+    }
 
     @ParameterizedTest
     @CsvSource({
@@ -184,7 +279,24 @@ public class CastMemberMySQLGatewayTest {
             final int expectedItemsCount,
             final long expectedTotal,
             final String expectedNames
-    ) {}
+    ) {
+        mockMembers();
+        final var expectedSort = "name";
+        final var expectedDirection = "asc";
+        final var expectedTerms = "";
+        final var query = new SearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+
+        final var results = gateway.findAll(query);
+        Assertions.assertEquals(expectedPage, results.currentPage());
+        Assertions.assertEquals(expectedPerPage, results.perPage());
+        Assertions.assertEquals(expectedTotal, results.total());
+        Assertions.assertEquals(expectedItemsCount, results.items().size());
+        int index = 0;
+        for (String name : expectedNames.split(";")){
+            Assertions.assertEquals(name, results.items().get(index).getName());
+            index++;
+        }
+    }
 
     private void mockMembers() {
         repository.saveAllAndFlush(List.of(
@@ -195,7 +307,5 @@ public class CastMemberMySQLGatewayTest {
                 CastMemberJpaEntity.from(CastMember.newMember("Martin Scorsese", CastMemberType.DIRECTOR))
         ));
     }
-
-
 
 }

@@ -3,9 +3,6 @@ package e3n.com.admin.catalogo.infrastructure.castmember;
 import e3n.com.admin.catalogo.domain.castmember.CastMember;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.pagination.Pagination;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberJpaEntity;
@@ -57,7 +54,11 @@ public class CastMemberMySQLGateway implements CastMemberGateway {
 
     @Override
     public Pagination<CastMember> findAll(SearchQuery query) {
-        final var page = PageRequest.of(query.page(), query.perPage(), Sort.by(Sort.Direction.fromString(query.direction()), query.direction()));
+        final var page = PageRequest.of(
+                query.page(),
+                query.perPage(),
+                Sort.by(Sort.Direction.fromString(query.direction()), query.sort())
+        );
         final var where = Optional.ofNullable(query.terms())
                 .filter(str -> !str.isBlank())
                 .map(this::assembleSpecification)
