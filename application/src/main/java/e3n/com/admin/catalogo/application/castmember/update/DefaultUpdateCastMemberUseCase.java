@@ -9,7 +9,7 @@ import e3n.com.admin.catalogo.domain.validation.handler.Notification;
 
 import java.util.Objects;
 
-public final class DefaultUpdateCastMemberUseCase extends UpdateCastMemberuseCase {
+public final class DefaultUpdateCastMemberUseCase extends UpdateCastMemberUseCase {
 
     private final CastMemberGateway gateway;
 
@@ -25,7 +25,7 @@ public final class DefaultUpdateCastMemberUseCase extends UpdateCastMemberuseCas
         final var notification = Notification.create();
         notification.validate(() -> member.update(updateCastMemberCommand.name(), updateCastMemberCommand.type()));
         if (notification.hasError()) {
-            throw new NotificationException("Could not uupdate Aggregate CastMember %s".formatted(id.getValue()), notification);
+            throw new NotificationException("Could not update Aggregate CastMember %s".formatted(id.getValue()), notification);
         }
         return UpdateCastMemberOutput.from(this.gateway.update(member));
     }

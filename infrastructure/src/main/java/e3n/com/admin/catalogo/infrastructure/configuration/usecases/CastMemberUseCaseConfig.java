@@ -10,9 +10,7 @@ import e3n.com.admin.catalogo.application.castmember.retrieve.get.GetCastMemberB
 import e3n.com.admin.catalogo.application.castmember.retrieve.list.DefaultListCastMembersUseCase;
 import e3n.com.admin.catalogo.application.castmember.retrieve.list.ListCastMembersUseCase;
 import e3n.com.admin.catalogo.application.castmember.update.DefaultUpdateCastMemberUseCase;
-import e3n.com.admin.catalogo.application.castmember.update.UpdateCastMemberuseCase;
-import e3n.com.admin.catalogo.application.category.update.DefaultUpdateCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.update.UpdateCategoryUseCase;
+import e3n.com.admin.catalogo.application.castmember.update.UpdateCastMemberUseCase;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,7 +45,7 @@ public class CastMemberUseCaseConfig {
     }
 
     @Bean
-    public UpdateCastMemberuseCase updateCastMemberuseCase(){
+    public UpdateCastMemberUseCase updateCastMemberuseCase(){
         return new DefaultUpdateCastMemberUseCase(castMemberGateway);
     }
 }
