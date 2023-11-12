@@ -9,7 +9,7 @@ import e3n.com.admin.catalogo.domain.validation.handler.Notification;
 
 import java.util.Objects;
 
-public final class DefaultUpdateCastMemberUseCase extends UpdateCastMemberUseCase {
+public non-sealed class DefaultUpdateCastMemberUseCase extends UpdateCastMemberUseCase {
 
     private final CastMemberGateway gateway;
 

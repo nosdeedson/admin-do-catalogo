@@ -6,7 +6,7 @@ import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
 
 import java.util.Objects;
 
-public final class DefaultListCastMembersUseCase extends ListCastMembersUseCase {
+public non-sealed class DefaultListCastMembersUseCase extends ListCastMembersUseCase {
 
     private CastMemberGateway gateway;
 
