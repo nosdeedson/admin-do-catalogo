@@ -22,7 +22,7 @@ public class CastMemberValidator extends Validator {
     public void validate() {
         // TODO
         //  MAYBE I SHOULD CREATE A PRIVATE METHOD HERE IF THE GENERIC DON'T WORK
-        Error error = StringUtils.checkNameConstraints(castMember.getName(), NAME_MAX_LENGTH, NAME_MIN_LENGTH);
+        Error error = StringUtils.checkStringConstraints(castMember.getName(), NAME_MAX_LENGTH, NAME_MIN_LENGTH);
         if (error != null){
             this.validationHandler().append(error);
         }

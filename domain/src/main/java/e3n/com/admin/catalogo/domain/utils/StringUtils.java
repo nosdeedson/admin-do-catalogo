@@ -5,7 +5,7 @@ import e3n.com.admin.catalogo.domain.validation.ValidationHandler;
 
 public final class StringUtils {
 
-    public static Error checkNameConstraints(final String value, final int maxLengnth, final int minLenght) {
+    public static Error checkStringConstraints(final String value, final int maxLengnth, final int minLenght) {
         if (value == null) {
             return new Error("'name' should not be null");
         }
