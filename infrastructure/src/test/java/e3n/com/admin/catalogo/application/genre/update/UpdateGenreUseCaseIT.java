@@ -8,6 +8,7 @@ import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
 import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
+import e3n.com.admin.catalogo.domain.utils.StringUtils;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.util.List;
-import java.util.function.Function;
 
 @IntegrationTest
 public class UpdateGenreUseCaseIT {
@@ -44,7 +44,8 @@ public class UpdateGenreUseCaseIT {
         final var expectedCategories = List.<CategoryID>of();
         final var expectedId = genre.getId();
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -77,7 +78,8 @@ public class UpdateGenreUseCaseIT {
         final var expectedId = genre.getId();
         final var expectedCategories = List.of(filmes.getId(), series.getId());
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -109,7 +111,8 @@ public class UpdateGenreUseCaseIT {
         final var expectedId = genre.getId();
         final var expectedCategories = List.of(filmes.getId(), series.getId());
 
-        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -136,7 +139,8 @@ public class UpdateGenreUseCaseIT {
         final var expectedErroMessage = "'name' should not be empty";
         final var expectedErroCount = 1;
 
-        final var command = UpdateGenreCommand.from(genre.getId().getValue(), " ", true, mapTo(List.<CategoryID>of(), CategoryID::getValue));
+        final var command = UpdateGenreCommand.from(genre.getId().getValue(), " ", true,
+                StringUtils.asString(List.<CategoryID>of()).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
 
@@ -168,7 +172,7 @@ public class UpdateGenreUseCaseIT {
         final var expectedId = genre.getId();
 
         final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName, expectedIsActive,
-                mapTo(expectedCategories, CategoryID::getValue));
+                StringUtils.asString(expectedCategories).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
 
@@ -183,16 +187,5 @@ public class UpdateGenreUseCaseIT {
         Mockito.verify(genreGateway, Mockito.times(0)).update(Mockito.any());
     }
 
-    /**
-     * List<D> D is the type of the list that will be returned
-     * @param actual current type of the list
-     * @param mapper  function that
-     * @return type of D
-     * @param <A> type of the object (atribute) of the list that will receive
-     * @param <D> type of the object (attribute) of the list that will be returned
-     *
-     */
-    private <A, D> List<D> mapTo(List<A> actual, Function<A, D> mapper){
-        return actual.stream().map(mapper).toList();
-    }
+
 }

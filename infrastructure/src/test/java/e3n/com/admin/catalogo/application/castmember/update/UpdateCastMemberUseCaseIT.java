@@ -1,4 +1,4 @@
-package e3n.com.admin.catalogo.application.castmember;
+package e3n.com.admin.catalogo.application.castmember.update;
 
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.application.castmember.create.CreateCastMemberCommand;

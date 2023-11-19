@@ -18,16 +18,25 @@ public class VideoValidator extends Validator {
 
     @Override
     public void validate() {
-        Error error = StringUtils.checkStringConstraints(this.video.getTitle(), TITLE_MAX_LENGTH, 1);
-        if (error != null){
-            this.validationHandler().append(error);
-        }
-        error = StringUtils.checkStringConstraints(this.video.getDescription(), DESCRIPTION_MAX_LENGTH, 1);
-        if (error != null){
-            this.validationHandler().append(error);
-        }
+        checkTitle();
         checkLaunchedAtConstraints();
         checkRatingConstraints();
+    }
+
+    private void checkTitle(){
+        final var title = this.video.getTitle();
+        if (title == null){
+            this.validationHandler().append(new Error("'title' should not be null"));
+            return;
+        }
+        if (title.isBlank()){
+            this.validationHandler().append(new Error("'title' should not be empty"));
+            return;
+        }
+        int length = this.video.getTitle().trim().length();
+        if (length > TITLE_MAX_LENGTH || length < 1){
+            this.validationHandler().append(new Error("'title' must be between 1 and 255 caracteres"));
+        }
     }
 
     private void checkLaunchedAtConstraints(){

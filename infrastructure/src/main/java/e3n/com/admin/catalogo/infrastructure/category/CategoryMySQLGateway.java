@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Component
 public class CategoryMySQLGateway implements CategoryGateway {
@@ -73,9 +74,12 @@ public class CategoryMySQLGateway implements CategoryGateway {
     }
 
     @Override
-    public List<CategoryID> existByIds(List<CategoryID> ids) {
-        List<String> idsBD = this.categoryRepository.existeByIds(ids.stream().map(CategoryID::getValue).toList());
-        return idsBD
+    public List<CategoryID> existByIds(Iterable<CategoryID> ids) {
+        final var categoryIds = StreamSupport.stream(ids.spliterator(), false)
+                .map(CategoryID::getValue)
+                .toList();
+
+        return this.categoryRepository.existeByIds(categoryIds)
                 .stream()
                 .map(CategoryID::from)
                 .toList();

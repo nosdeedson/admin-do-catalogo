@@ -6,6 +6,7 @@ import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
 import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
+import e3n.com.admin.catalogo.domain.utils.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.AdditionalAnswers;
@@ -44,7 +45,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         final var expectedCategories = List.<CategoryID>of();
 
         final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName,
-                expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+                expectedIsActive, StringUtils.asString(expectedCategories).toList());
 
         Mockito.when(genreGateway.findById(Mockito.any()))
                 .thenReturn(Optional.of(Genre.with(genre)));
@@ -83,7 +84,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         final var expectedId = genre.getId();
 
         final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName,
-                expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+                expectedIsActive, StringUtils.asString(expectedCategories).toList());
 
         Mockito.when(categoryGateway.existByIds(Mockito.any()))
                 .thenReturn(expectedCategories);
@@ -124,7 +125,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
         final var expectedCategories = List.<CategoryID>of();
 
         final var command = UpdateGenreCommand.from(expectedId.getValue(), expectedName,
-                expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+                expectedIsActive, StringUtils.asString(expectedCategories).toList());
 
         Mockito.when(genreGateway.findById(Mockito.any()))
                 .thenReturn(Optional.of(Genre.with(genre)));
@@ -167,7 +168,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
                 expectedId.getValue(),
                 null,
                 expectedIsActive,
-                mapTo(expectedCategories, CategoryID::getValue)
+                StringUtils.asString(expectedCategories).toList()
         );
 
         Mockito.when(genreGateway.findById(Mockito.any()))
@@ -205,7 +206,7 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
                 expectedId.getValue(),
                 null,
                 expectedIsActive,
-                mapTo(expectedCategories, CategoryID::getValue)
+                StringUtils.asString(expectedCategories).toList()
         );
 
         Mockito.when(categoryGateway.existByIds(Mockito.any()))
@@ -228,16 +229,4 @@ public class UpdateGenreUseCaseTest extends UseCaseTest {
 
     }
 
-    /**
-     * List<D> D is the type of the list that will be returned
-     * @param actual current type of the list
-     * @param mapper  function that
-     * @return type of D
-     * @param <A> type of the object (atribute) of the list that will receive
-     * @param <D> type of the object (attribute) of the list that will be returned
-     *
-     */
-    private <A, D> List<D> mapTo(final List<A> actual, Function<A, D> mapper){
-        return actual.stream().map(mapper).toList();
-    }
 }

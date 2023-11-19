@@ -7,6 +7,7 @@ import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
 import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
+import e3n.com.admin.catalogo.domain.utils.StringUtils;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -41,7 +42,7 @@ public class CreateGenreUseCaseIT {
         final var expectedIsActive = true;
         final var expectedCategories = List.of(filmes.getId());
 
-        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, StringUtils.asString(expectedCategories).toList());
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -67,7 +68,7 @@ public class CreateGenreUseCaseIT {
         final var expectedIsActive = true;
         final var expectedCategories = List.<CategoryID>of();
 
-        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, StringUtils.asString(expectedCategories).toList());
 
         final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
@@ -92,7 +93,7 @@ public class CreateGenreUseCaseIT {
         final var expectedIsActive = false;
         final var expectedCategories = List.<CategoryID>of();
 
-        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, StringUtils.asString(expectedCategories).toList());
 
         final var output = useCase.execute(command);
 
@@ -119,7 +120,7 @@ public class CreateGenreUseCaseIT {
         final var expectedCategories = List.<CategoryID>of();
         final var expectedErrorMessage = "'name' should not be empty";
         final var expectedErrorCount = 1;
-        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, StringUtils.asString(expectedCategories).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
 
@@ -136,7 +137,7 @@ public class CreateGenreUseCaseIT {
         final var expectedCategories = List.<CategoryID>of();
         final var expectedErrorMessage = "'name' should not be null";
         final var expectedErrorCount = 1;
-        final var command = CreateGenreCommand.with(null, true, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(null, true, StringUtils.asString(expectedCategories).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
 
@@ -162,7 +163,8 @@ public class CreateGenreUseCaseIT {
         final var expectedErrorMessageTwo = "'name' should not be empty";
         final var expectedErrorCount = 2;
 
-        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
         Assertions.assertNotNull(exception);
@@ -171,19 +173,6 @@ public class CreateGenreUseCaseIT {
         Assertions.assertEquals(expectedErrorMessageTwo, exception.getErrors().get(1).message());
         Mockito.verify(categoryGateway, Mockito.times(1)).existByIds(Mockito.any());
         Mockito.verify(genreGateway, Mockito.times(0)).create(Mockito.any());
-    }
-
-    /**
-     * List<D> D is the type of the list that will be returned
-     * @param actual current type of the list
-     * @param mapper  function that
-     * @return type of D
-     * @param <A> type of the object (atribute) of the list that will receive
-     * @param <D> type of the object (attribute) of the list that will be returned
-     *
-     */
-    private <A, D> List<D> mapTo(List<A> actual, final Function<A, D> mapper){
-        return actual.stream().map(mapper).toList();
     }
 
 }

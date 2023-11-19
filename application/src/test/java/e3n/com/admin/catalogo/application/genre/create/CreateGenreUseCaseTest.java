@@ -5,6 +5,7 @@ import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
+import e3n.com.admin.catalogo.domain.utils.StringUtils;
 import e3n.com.admin.catalogo.domain.validation.handler.Notification;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,8 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         final var expectedName = "Action";
         final var expectedIsActive = true;
         final var expectedCategories = List.<CategoryID>of();
-        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         Mockito.when(genreGateway.create(Mockito.any()))
                 .thenAnswer(AdditionalAnswers.returnsFirstArg());
@@ -64,7 +66,8 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         final var expectedIsActive = true;
         final var expectedCategories = List.<CategoryID>of(CategoryID.from("123"), CategoryID.from("456"));
 
-        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         Mockito.when(categoryGateway.existByIds(Mockito.any()))
                 .thenReturn(expectedCategories);
@@ -96,7 +99,8 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         final var expectedName = "Action";
         final var expectedIsActive = false;
         final var expectedCategories = List.<CategoryID>of();
-        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         Mockito.when(genreGateway.create(Mockito.any()))
                 .thenAnswer(AdditionalAnswers.returnsFirstArg());
@@ -124,7 +128,8 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         final var expectedErrorMessage = "'name' should not be empty";
         final var expectedErrorCount = 1;
 
-        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var commad = CreateGenreCommand.with(expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
         final var exception = Assertions.assertThrows(NotificationException.class, () ->{
             useCase.execute(commad);
         });
@@ -143,7 +148,8 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         final var expectedErrorMessage = "'name' should not be null";
         final var expectedErrorCount = 1;
 
-        final var command = CreateGenreCommand.with(null, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(null, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () -> {
             useCase.execute(command);
@@ -175,7 +181,8 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         Mockito.when(categoryGateway.existByIds(Mockito.any()))
                 .thenReturn(List.of(series));
 
-        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () ->{
             useCase.execute(command);
@@ -209,7 +216,8 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
         Mockito.when(categoryGateway.existByIds(Mockito.any()))
                 .thenReturn(List.of(series));
 
-        final var command = CreateGenreCommand.with(expectedName, expectedIsActive, mapTo(expectedCategories, CategoryID::getValue));
+        final var command = CreateGenreCommand.with(expectedName, expectedIsActive,
+                StringUtils.asString(expectedCategories).toList());
 
         final var exception = Assertions.assertThrows(NotificationException.class, () ->{
             useCase.execute(command);
@@ -226,6 +234,7 @@ public class CreateGenreUseCaseTest extends UseCaseTest {
     }
 
     /**
+     * deprecated
      * List<D> D is the type of the list that will be returned
      * @param actual current type of the list
      * @param mapper  function that
