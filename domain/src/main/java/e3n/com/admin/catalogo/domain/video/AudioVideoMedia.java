@@ -74,8 +74,8 @@ public class AudioVideoMedia extends ValueObject {
         return AudioVideoMedia.with(this.id, this.checksum, this.name, this.rawLocation, this.encodedLocation, MediaStatus.PROCESSING);
     }
 
-    public AudioVideoMedia completed(){
-        return AudioVideoMedia.with(this.id, this.checksum, this.name, this.rawLocation, this.encodedLocation, MediaStatus.COMPLETED);
+    public AudioVideoMedia completed(final String encodedPath){
+        return AudioVideoMedia.with(this.id, this.checksum, this.name, this.rawLocation, encodedPath, MediaStatus.COMPLETED);
     }
 
     public AudioVideoMedia pendingEncode(){

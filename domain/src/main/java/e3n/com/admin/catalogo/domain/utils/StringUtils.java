@@ -14,19 +14,38 @@ import java.util.stream.Stream;
 
 public final class StringUtils {
 
-    public static Error checkStringConstraints(final String value, final int maxLengnth, final int minLenght) {
+    public static Error checkStringConstraints(final String value, final String nameValue, final int maxLengnth, final int minLenght) {
         if (value == null) {
-            return new Error("'name' should not be null");
+            String message = createMessage(nameValue, "should not be null");
+            return new Error(message);
         }
 
         if (value.isBlank()){
-            return new Error("'name' should not be empty");
+            String message = createMessage(nameValue, "should not be empty");
+            return  new Error(message);
         }
         final int length = value.trim().length();
         if (length > maxLengnth || length <= minLenght){
-            return new Error("'name' sought be between 3 and 255 characteres");
+            String message = createMessage(nameValue,  maxLengnth, minLenght);
+            return new Error(message);
         }
         return null;
+    }
+
+    private static String  createMessage(final String nameValue, final int maxLengnth, final int minLenght){
+        return "'"
+                + nameValue +
+                "' must be between "
+                + minLenght
+                + " and "
+                + maxLengnth
+                + " characteres";
+    }
+    private static String createMessage(final String nameValue, final String message){
+        return "'" +
+                nameValue +
+                "' " +
+                message;
     }
     
     public static Stream<String> asString(final Collection<? extends Identifier> ids){

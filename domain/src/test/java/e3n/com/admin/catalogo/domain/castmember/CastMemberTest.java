@@ -56,7 +56,7 @@ public class CastMemberTest{
                 """;
 
         final var expectedType = CastMemberType.ACTOR;
-        final var expectedErrorMessage = "'name' sought be between 3 and 255 characteres";
+        final var expectedErrorMessage = "'name' must be between 3 and 255 characteres";
         final var expectedErrorCount = 1;
         final var exception = Assertions.assertThrows(NotificationException.class, () -> CastMember.newMember(expectedName, expectedType));
 
@@ -141,7 +141,7 @@ public class CastMemberTest{
                 """;
 
         final var member = CastMember.newMember("Eva Mendes", CastMemberType.ACTRESS);
-        final var expectedErrorMessage = "'name' sought be between 3 and 255 characteres";
+        final var expectedErrorMessage = "'name' must be between 3 and 255 characteres";
         final var expectedErrorCount = 1;
 
         Assertions.assertNotNull(member);

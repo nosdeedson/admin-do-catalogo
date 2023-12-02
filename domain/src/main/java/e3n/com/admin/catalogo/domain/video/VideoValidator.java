@@ -18,26 +18,26 @@ public class VideoValidator extends Validator {
 
     @Override
     public void validate() {
-        checkTitle();
+        checkTitleConstraints();
+        checkDescriptionConstraints();
         checkLaunchedAtConstraints();
         checkRatingConstraints();
     }
 
-    private void checkTitle(){
+    private void checkTitleConstraints(){
         final var title = this.video.getTitle();
-        if (title == null){
-            this.validationHandler().append(new Error("'title' should not be null"));
-            return;
-        }
-        if (title.isBlank()){
-            this.validationHandler().append(new Error("'title' should not be empty"));
-            return;
-        }
-        int length = this.video.getTitle().trim().length();
-        if (length > TITLE_MAX_LENGTH || length < 1){
-            this.validationHandler().append(new Error("'title' must be between 1 and 255 caracteres"));
+        final var error = StringUtils.checkStringConstraints(title, "title", TITLE_MAX_LENGTH, 1);
+        if (error != null){
+            this.validationHandler().append(error);
         }
     }
+
+    private void checkDescriptionConstraints(){
+        if (this.video.getDescription().length() > DESCRIPTION_MAX_LENGTH){
+            this.validationHandler().append(new Error("'description' should not be greater than 4000"));
+        }
+    }
+
 
     private void checkLaunchedAtConstraints(){
         if (this.video.getLaunchedAt() == null){
@@ -47,7 +47,7 @@ public class VideoValidator extends Validator {
 
     private void checkRatingConstraints(){
         if (this.video.getRating() == null){
-            this.validationHandler().append(new Error("'rating' shoul not be null"));
+            this.validationHandler().append(new Error("'rating' should not be null"));
         }
     }
 }

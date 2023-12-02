@@ -295,6 +295,6 @@ public class VideoTest{
         Assertions.assertNotNull(video.getCreatedAt());
     }
 
-//    @Test
-//    public void givenValidVideo_whenCallsWith_shouldCreateWithoutEvents() {}
+    @Test
+    public void givenValidVideo_whenCallsWith_shouldCreateWithoutEvents() {}
 }
