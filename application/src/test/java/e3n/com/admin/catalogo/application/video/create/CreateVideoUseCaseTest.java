@@ -655,7 +655,7 @@ public class CreateVideoUseCaseTest extends UseCaseTest {
 
     @Test
     public void givenANullLaunchYear_whenCallsCreateVideo_shouldReturnDomainException() {
-        final var expectErrorMessage = "'launchedAt' shoul not be null";
+        final var expectErrorMessage = "'launchedAt' should not be null";
         final var expectedErrorCount = 1;
 
         final var expectedTitle = Fixture.title();
