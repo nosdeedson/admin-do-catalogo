@@ -179,7 +179,7 @@ public class UpdateVideoUseCaseTest extends UseCaseTest {
     @Test
     public void givenAValidCommand_whenCallsCreateVideoThrowsException_shouldCallClearResources() {}
 
-    
+
     private void mockAudioVideoMedia() {
         Mockito.when(resourceGateway.storeAudioVideo(Mockito.any(), Mockito.any())).thenAnswer(t -> {
             final var videoResource = t.getArgument(1, VideoResource.class);
