@@ -41,7 +41,7 @@ public class VideoValidator extends Validator {
 
     private void checkLaunchedAtConstraints(){
         if (this.video.getLaunchedAt() == null){
-            this.validationHandler().append(new Error("'launchedAt' shoul not be null"));
+            this.validationHandler().append(new Error("'launchedAt' should not be null"));
         }
     }
 
