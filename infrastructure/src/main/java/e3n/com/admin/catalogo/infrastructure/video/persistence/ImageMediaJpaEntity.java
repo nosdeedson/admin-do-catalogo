@@ -1,0 +1,84 @@
+package e3n.com.admin.catalogo.infrastructure.video.persistence;
+
+import e3n.com.admin.catalogo.domain.video.ImageMedia;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "ImageMedia")
+@Table(name = "video_image_media")
+public class ImageMediaJpaEntity {
+
+    @Id
+    private String id;
+
+    @Column(name = "checksum", nullable = false)
+    private String checksum;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "file_path", nullable = false)
+    private String filePath;
+
+    public ImageMediaJpaEntity() {
+    }
+
+    private ImageMediaJpaEntity(String id, String checksum, String name, String filePath) {
+        this.id = id;
+        this.checksum = checksum;
+        this.name = name;
+        this.filePath = filePath;
+    }
+
+    public static ImageMediaJpaEntity from(final ImageMedia media){
+        return new ImageMediaJpaEntity(
+                media.id(),
+                media.checksum(),
+                media.name(),
+                media.location()
+        );
+    }
+
+    public ImageMedia toDomain(){
+        return ImageMedia.with(getId(), getChecksum(), getName(), getFilePath());
+    }
+
+    public ImageMediaJpaEntity setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public ImageMediaJpaEntity setChecksum(String checksum) {
+        this.checksum = checksum;
+        return this;
+    }
+
+    public ImageMediaJpaEntity setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ImageMediaJpaEntity setFilePath(String filePath) {
+        this.filePath = filePath;
+        return this;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getChecksum() {
+        return checksum;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+}
