@@ -8,6 +8,8 @@ import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreId;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.category.CategoryMySQLGateway;
+import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
+import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.Assertions;
@@ -27,6 +29,9 @@ public class GenreMySQLGatewayTest {
     private CategoryMySQLGateway categoryMySQLGateway;
 
     @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
     private GenreMySQLGateway genreMySQLGateway;
 
     @Autowired
@@ -41,12 +46,11 @@ public class GenreMySQLGatewayTest {
 
     @Test
     public void givenAValidGenre_whenCallsCreateGenre_shouldPersistGenre() throws InterruptedException {
-        final var filmes =
-                categoryMySQLGateway.create(Category.newCategory("Filmes", null, true));
-
+        final var filmes = categoryRepository.saveAndFlush(CategoryJpaEntity.from(Category.newCategory("Filmes", null, true)));
+        Assertions.assertEquals(1, categoryRepository.count());
         final var expectedName = "Action";
         final var expectedIsActive = true;
-        final var expectedCategories = List.of(filmes.getId());
+        final var expectedCategories = List.of(CategoryID.from(filmes.getId()));
 
         final var genre = Genre.newGenre(expectedName, expectedIsActive);
         genre.addCategories(expectedCategories);
@@ -58,7 +62,6 @@ public class GenreMySQLGatewayTest {
         final var updated = genre.getUpdatedAt();
         Thread.sleep(5000);
         final var actualGenre = genreMySQLGateway.create(genre);
-
         Assertions.assertEquals(1, genreRepository.count());
         Assertions.assertEquals(expectedId, actualGenre.getId());
         Assertions.assertEquals(expectedName, actualGenre.getName());

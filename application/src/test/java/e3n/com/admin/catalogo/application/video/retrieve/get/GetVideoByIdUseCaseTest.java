@@ -4,6 +4,7 @@ import e3n.com.admin.catalogo.application.Fixture;
 import e3n.com.admin.catalogo.application.UseCaseTest;
 import e3n.com.admin.catalogo.domain.Identifier;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
+import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
 import e3n.com.admin.catalogo.domain.genre.GenreId;
 import e3n.com.admin.catalogo.domain.utils.StringUtils;
@@ -76,13 +77,21 @@ public class GetVideoByIdUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(expectedOpened, result.opened());
         Assertions.assertEquals(expectedPublished, result.published());
         Assertions.assertEquals(expectedRating, result.rating());
-
-        Assertions.assertEquals(StringUtils.asString(expectedCategories).toList(),
-                result.categories().stream().map(CastMemberID::from).map(CastMemberID::getValue).toList() );
-        Assertions.assertEquals(StringUtils.asString(expectedGenres).toList(),
-                result.genres().stream().map(GenreId::from).map(GenreId::getValue).toList() );
-        Assertions.assertEquals(StringUtils.asString(expectedMembers).toList(),
-                result.castMembers().stream().map(CastMemberID::from).map(CastMemberID::getValue).toList() );
+        Assertions.assertTrue(
+                StringUtils.asString(expectedCategories).toList().size() ==
+                        result.categories().stream().map(CategoryID::from).map(CategoryID::getValue).toList().size()
+                && StringUtils.asString(expectedCategories).toList().containsAll(result.categories().stream().map(CategoryID::from).map(CategoryID::getValue).toList())
+        );
+        Assertions.assertTrue(StringUtils.asString(expectedGenres).toList().size() ==
+                result.genres().stream().map(GenreId::from).map(GenreId::getValue).toList().size()
+                && StringUtils.asString(expectedGenres).toList().containsAll(
+                result.genres().stream().map(GenreId::from).map(GenreId::getValue).toList())
+        );
+        Assertions.assertTrue(StringUtils.asString(expectedMembers).toList().size() ==
+                result.castMembers().stream().map(CastMemberID::from).map(CastMemberID::getValue).toList().size()
+                && StringUtils.asString(expectedMembers).toList().containsAll(
+                result.castMembers().stream().map(CastMemberID::from).map(CastMemberID::getValue).toList())
+        );
 
         Assertions.assertEquals(expectedVideo, result.video());
         Assertions.assertEquals(expectedBanner, result.banner());

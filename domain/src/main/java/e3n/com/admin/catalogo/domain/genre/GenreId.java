@@ -1,6 +1,7 @@
 package e3n.com.admin.catalogo.domain.genre;
 
 import e3n.com.admin.catalogo.domain.Identifier;
+import e3n.com.admin.catalogo.domain.utils.IdUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -15,11 +16,11 @@ public class GenreId extends Identifier {
     }
 
     public static GenreId unique(){
-        return GenreId.from(UUID.randomUUID().toString());
+        return GenreId.from(IdUtils.uuid());
     }
 
     public static GenreId from(final String id){
-        return new GenreId(id);
+        return new GenreId(id.trim());
     }
 
     @Override

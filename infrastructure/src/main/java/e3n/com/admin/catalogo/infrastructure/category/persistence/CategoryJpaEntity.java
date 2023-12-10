@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
 
-@Entity // se usar como a seguir '@Entity(name = "Category")' no repository não precisa usar CategoryJpaEntity basta usar Category
+@Entity(name = "Category") // se usar como a seguir '@Entity(name = "Category")' no repository não precisa usar CategoryJpaEntity basta usar Category
 @Table(name = "category")
 public class CategoryJpaEntity {
 

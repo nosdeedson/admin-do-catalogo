@@ -1,6 +1,7 @@
 package e3n.com.admin.catalogo.domain.category;
 
 import e3n.com.admin.catalogo.domain.Identifier;
+import e3n.com.admin.catalogo.domain.utils.IdUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -14,11 +15,11 @@ public class CategoryID extends Identifier {
     }
 
     public static CategoryID unique(){
-        return CategoryID.from(UUID.randomUUID().toString());
+        return CategoryID.from(IdUtils.uuid());
     }
 
     public static CategoryID from(final String anId){
-        return new CategoryID(anId);
+        return new CategoryID(anId.trim());
     }
 
     @Override
