@@ -1,5 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.video;
 
+import e3n.com.admin.catalogo.domain.exceptions.DomainException;
+import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
 import e3n.com.admin.catalogo.domain.pagination.Pagination;
 import e3n.com.admin.catalogo.domain.video.*;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoJpaEntity;
@@ -24,12 +26,16 @@ public class DefaultVideoGateway implements VideoGateway {
 
     @Override
     public void deleteById(VideoID id) {
-
+        if(this.videoRepository.existsById(id.getValue())){
+            this.videoRepository.deleteById(id.getValue());
+        }
     }
 
     @Override
     public Optional<Video> findById(VideoID id) {
-        return Optional.empty();
+        final var fromBD =
+                this.videoRepository.findById(id.getValue()).orElseThrow(() -> NotFoundException.with(Video.class, id));
+        return Optional.ofNullable(fromBD.toAggregate());
     }
 
     @Override
