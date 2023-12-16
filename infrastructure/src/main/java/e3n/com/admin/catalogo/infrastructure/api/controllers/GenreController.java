@@ -1,12 +1,12 @@
 package e3n.com.admin.catalogo.infrastructure.api.controllers;
 
-import e3n.com.admin.catalogo.application.genre.create.CreateGenreCommand;
-import e3n.com.admin.catalogo.application.genre.create.CreateGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
-import e3n.com.admin.catalogo.application.genre.retrieve.list.ListGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.update.UpdateGenreCommand;
-import e3n.com.admin.catalogo.application.genre.update.UpdateGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.create.CreateGenreCommand;
+import com.E3N.admin.catalogo.application.genre.create.CreateGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
+import com.E3N.admin.catalogo.application.genre.retrieve.list.ListGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.update.UpdateGenreCommand;
+import com.E3N.admin.catalogo.application.genre.update.UpdateGenreUseCase;
 import e3n.com.admin.catalogo.domain.pagination.Pagination;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.api.GenreApi;

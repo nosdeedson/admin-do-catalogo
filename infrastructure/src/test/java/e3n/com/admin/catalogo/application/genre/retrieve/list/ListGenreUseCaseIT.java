@@ -1,5 +1,7 @@
 package e3n.com.admin.catalogo.application.genre.retrieve.list;
 
+import com.E3N.admin.catalogo.application.genre.retrieve.list.GenreListOutput;
+import com.E3N.admin.catalogo.application.genre.retrieve.list.ListGenreUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;

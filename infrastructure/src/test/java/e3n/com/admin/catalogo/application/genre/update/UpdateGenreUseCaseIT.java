@@ -1,6 +1,8 @@
 package e3n.com.admin.catalogo.application.genre.update;
 
 
+import com.E3N.admin.catalogo.application.genre.update.UpdateGenreCommand;
+import com.E3N.admin.catalogo.application.genre.update.UpdateGenreUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;

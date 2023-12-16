@@ -1,6 +1,8 @@
 package e3n.com.admin.catalogo.application.castmember.create;
 
 
+import com.E3N.admin.catalogo.application.castmember.create.CreateCastMemberCommand;
+import com.E3N.admin.catalogo.application.castmember.create.CreateCastMemberUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
 import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
@@ -8,7 +10,6 @@ import e3n.com.admin.catalogo.infrastructure.castmember.CastMemberMySQLGateway;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;

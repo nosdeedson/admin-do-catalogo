@@ -1,5 +1,7 @@
 package e3n.com.admin.catalogo.application.castmember.retrieve.list;
 
+import com.E3N.admin.catalogo.application.castmember.retrieve.list.CastMemberListOutput;
+import com.E3N.admin.catalogo.application.castmember.retrieve.list.ListCastMembersUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.castmember.CastMember;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
@@ -13,7 +15,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
-import javax.validation.constraints.Min;
 import java.util.List;
 
 @IntegrationTest

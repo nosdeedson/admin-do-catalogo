@@ -1,15 +1,15 @@
 package e3n.com.admin.catalogo.infrastructure.configuration.usecases;
 
-import e3n.com.admin.catalogo.application.category.create.CreateCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.create.DefaultCreateCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.delete.DefaultDeleteCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.delete.DeleteCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.retrieve.get.DefaultGetCategoryByIdUseCase;
-import e3n.com.admin.catalogo.application.category.retrieve.get.GetCategoryByIdUseCase;
-import e3n.com.admin.catalogo.application.category.retrieve.list.DefaultListCategoriesUseCase;
-import e3n.com.admin.catalogo.application.category.retrieve.list.ListCategoriesUseCase;
-import e3n.com.admin.catalogo.application.category.update.DefaultUpdateCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.update.UpdateCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.create.CreateCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.create.DefaultCreateCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.delete.DefaultDeleteCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.delete.DeleteCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.retrieve.get.DefaultGetCategoryByIdUseCase;
+import com.E3N.admin.catalogo.application.category.retrieve.get.GetCategoryByIdUseCase;
+import com.E3N.admin.catalogo.application.category.retrieve.list.DefaultListCategoriesUseCase;
+import com.E3N.admin.catalogo.application.category.retrieve.list.ListCategoriesUseCase;
+import com.E3N.admin.catalogo.application.category.update.DefaultUpdateCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.update.UpdateCategoryUseCase;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

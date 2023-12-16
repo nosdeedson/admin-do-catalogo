@@ -1,11 +1,12 @@
 package e3n.com.admin.catalogo.application.genre.create;
 
+import com.E3N.admin.catalogo.application.genre.create.CreateGenreCommand;
+import com.E3N.admin.catalogo.application.genre.create.CreateGenreUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.domain.category.CategoryID;
 import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
-import e3n.com.admin.catalogo.domain.genre.Genre;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
 import e3n.com.admin.catalogo.domain.utils.StringUtils;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.util.List;
-import java.util.function.Function;
 
 @IntegrationTest
 public class CreateGenreUseCaseIT {

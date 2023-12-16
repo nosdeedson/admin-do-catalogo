@@ -1,6 +1,8 @@
 package e3n.com.admin.catalogo.application.category.create;
 
 
+import com.E3N.admin.catalogo.application.category.create.CreateCategoryCommand;
+import com.E3N.admin.catalogo.application.category.create.CreateCategoryUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
@@ -8,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import static org.mockito.ArgumentMatchers.any;

@@ -1,7 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.castmember.presenter;
 
-import e3n.com.admin.catalogo.application.castmember.retrieve.get.CastMemberOutput;
-import e3n.com.admin.catalogo.application.castmember.retrieve.list.CastMemberListOutput;
+import com.E3N.admin.catalogo.application.castmember.retrieve.get.CastMemberOutput;
+import com.E3N.admin.catalogo.application.castmember.retrieve.list.CastMemberListOutput;
 import e3n.com.admin.catalogo.infrastructure.castmember.models.CastMemberListResponse;
 import e3n.com.admin.catalogo.infrastructure.castmember.models.CastMemberResponse;
 

@@ -1,5 +1,6 @@
 package e3n.com.admin.catalogo.application.genre.retrieve.get;
 
+import com.E3N.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.domain.category.CategoryID;

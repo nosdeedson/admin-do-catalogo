@@ -1,7 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.genre.presenters;
 
-import e3n.com.admin.catalogo.application.genre.retrieve.get.GenreOutput;
-import e3n.com.admin.catalogo.application.genre.retrieve.list.GenreListOutput;
+import com.E3N.admin.catalogo.application.genre.retrieve.get.GenreOutput;
+import com.E3N.admin.catalogo.application.genre.retrieve.list.GenreListOutput;
 import e3n.com.admin.catalogo.infrastructure.genre.models.GenreListResponse;
 import e3n.com.admin.catalogo.infrastructure.genre.models.GenreResponse;
 

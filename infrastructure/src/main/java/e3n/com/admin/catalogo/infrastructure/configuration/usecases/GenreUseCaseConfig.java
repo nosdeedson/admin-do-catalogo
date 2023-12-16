@@ -1,15 +1,15 @@
 package e3n.com.admin.catalogo.infrastructure.configuration.usecases;
 
-import e3n.com.admin.catalogo.application.genre.create.CreateGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.create.DefaultCreateGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.delelte.DefaultDeleteGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.retrieve.get.DefaultGetGenreByIdUseCase;
-import e3n.com.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
-import e3n.com.admin.catalogo.application.genre.retrieve.list.DefaultListGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.retrieve.list.ListGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.update.DefaultUpdateGenreUseCase;
-import e3n.com.admin.catalogo.application.genre.update.UpdateGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.create.CreateGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.create.DefaultCreateGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.delelte.DefaultDeleteGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.retrieve.get.DefaultGetGenreByIdUseCase;
+import com.E3N.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
+import com.E3N.admin.catalogo.application.genre.retrieve.list.DefaultListGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.retrieve.list.ListGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.update.DefaultUpdateGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.update.UpdateGenreUseCase;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.domain.genre.GenreGateway;
 import org.springframework.context.annotation.Bean;

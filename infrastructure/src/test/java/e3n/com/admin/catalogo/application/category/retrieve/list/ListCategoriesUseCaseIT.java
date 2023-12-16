@@ -1,5 +1,6 @@
 package e3n.com.admin.catalogo.application.category.retrieve.list;
 
+import com.E3N.admin.catalogo.application.category.retrieve.list.ListCategoriesUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;

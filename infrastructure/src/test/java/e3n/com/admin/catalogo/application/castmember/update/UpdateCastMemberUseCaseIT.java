@@ -1,9 +1,8 @@
 package e3n.com.admin.catalogo.application.castmember.update;
 
 import e3n.com.admin.catalogo.IntegrationTest;
-import e3n.com.admin.catalogo.application.castmember.create.CreateCastMemberCommand;
-import e3n.com.admin.catalogo.application.castmember.update.UpdateCastMemberCommand;
-import e3n.com.admin.catalogo.application.castmember.update.UpdateCastMemberUseCase;
+import com.E3N.admin.catalogo.application.castmember.update.UpdateCastMemberCommand;
+import com.E3N.admin.catalogo.application.castmember.update.UpdateCastMemberUseCase;
 import e3n.com.admin.catalogo.domain.castmember.CastMember;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberID;

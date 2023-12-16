@@ -1,5 +1,6 @@
 package e3n.com.admin.catalogo.application.category.retrieve.get;
 
+import com.E3N.admin.catalogo.application.category.retrieve.get.GetCategoryByIdUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.domain.category.CategoryGateway;
@@ -12,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-import org.springframework.web.client.HttpClientErrorException;
 
 @IntegrationTest
 public class GetCategoryByIdUseCaseIT {

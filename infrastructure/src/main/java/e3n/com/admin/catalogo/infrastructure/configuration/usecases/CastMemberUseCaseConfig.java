@@ -1,16 +1,16 @@
 package e3n.com.admin.catalogo.infrastructure.configuration.usecases;
 
 
-import e3n.com.admin.catalogo.application.castmember.create.CreateCastMemberUseCase;
-import e3n.com.admin.catalogo.application.castmember.create.DefaultCreateCastMemberUseCase;
-import e3n.com.admin.catalogo.application.castmember.delete.DefaultDeleteCastMemberUseCase;
-import e3n.com.admin.catalogo.application.castmember.delete.DeleteCastMemberUseCase;
-import e3n.com.admin.catalogo.application.castmember.retrieve.get.DefaultGetCastMemberByIdUseCase;
-import e3n.com.admin.catalogo.application.castmember.retrieve.get.GetCastMemberByIdUseCase;
-import e3n.com.admin.catalogo.application.castmember.retrieve.list.DefaultListCastMembersUseCase;
-import e3n.com.admin.catalogo.application.castmember.retrieve.list.ListCastMembersUseCase;
-import e3n.com.admin.catalogo.application.castmember.update.DefaultUpdateCastMemberUseCase;
-import e3n.com.admin.catalogo.application.castmember.update.UpdateCastMemberUseCase;
+import com.E3N.admin.catalogo.application.castmember.create.CreateCastMemberUseCase;
+import com.E3N.admin.catalogo.application.castmember.create.DefaultCreateCastMemberUseCase;
+import com.E3N.admin.catalogo.application.castmember.delete.DefaultDeleteCastMemberUseCase;
+import com.E3N.admin.catalogo.application.castmember.delete.DeleteCastMemberUseCase;
+import com.E3N.admin.catalogo.application.castmember.retrieve.get.DefaultGetCastMemberByIdUseCase;
+import com.E3N.admin.catalogo.application.castmember.retrieve.get.GetCastMemberByIdUseCase;
+import com.E3N.admin.catalogo.application.castmember.retrieve.list.DefaultListCastMembersUseCase;
+import com.E3N.admin.catalogo.application.castmember.retrieve.list.ListCastMembersUseCase;
+import com.E3N.admin.catalogo.application.castmember.update.DefaultUpdateCastMemberUseCase;
+import com.E3N.admin.catalogo.application.castmember.update.UpdateCastMemberUseCase;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

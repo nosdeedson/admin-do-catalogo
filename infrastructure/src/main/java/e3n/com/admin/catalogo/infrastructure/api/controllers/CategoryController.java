@@ -1,14 +1,14 @@
 package e3n.com.admin.catalogo.infrastructure.api.controllers;
 
-import e3n.com.admin.catalogo.application.category.create.CreateCategoryCommand;
-import e3n.com.admin.catalogo.application.category.create.CreateCategoryOutput;
-import e3n.com.admin.catalogo.application.category.create.CreateCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.delete.DeleteCategoryUseCase;
-import e3n.com.admin.catalogo.application.category.retrieve.get.GetCategoryByIdUseCase;
-import e3n.com.admin.catalogo.application.category.retrieve.list.ListCategoriesUseCase;
-import e3n.com.admin.catalogo.application.category.update.UpdateCategoryCommand;
-import e3n.com.admin.catalogo.application.category.update.UpdateCategoryOutput;
-import e3n.com.admin.catalogo.application.category.update.UpdateCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.create.CreateCategoryCommand;
+import com.E3N.admin.catalogo.application.category.create.CreateCategoryOutput;
+import com.E3N.admin.catalogo.application.category.create.CreateCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.delete.DeleteCategoryUseCase;
+import com.E3N.admin.catalogo.application.category.retrieve.get.GetCategoryByIdUseCase;
+import com.E3N.admin.catalogo.application.category.retrieve.list.ListCategoriesUseCase;
+import com.E3N.admin.catalogo.application.category.update.UpdateCategoryCommand;
+import com.E3N.admin.catalogo.application.category.update.UpdateCategoryOutput;
+import com.E3N.admin.catalogo.application.category.update.UpdateCategoryUseCase;
 import e3n.com.admin.catalogo.domain.pagination.Pagination;
 import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.domain.validation.handler.Notification;

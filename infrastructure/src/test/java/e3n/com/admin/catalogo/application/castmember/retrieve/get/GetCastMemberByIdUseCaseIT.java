@@ -1,5 +1,6 @@
 package e3n.com.admin.catalogo.application.castmember.retrieve.get;
 
+import com.E3N.admin.catalogo.application.castmember.retrieve.get.GetCastMemberByIdUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.castmember.CastMember;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;

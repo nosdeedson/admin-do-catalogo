@@ -1,6 +1,5 @@
 package e3n.com.admin.catalogo.infrastructure;
 
-import e3n.com.admin.catalogo.application.UseCase;
 import e3n.com.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
@@ -8,10 +7,7 @@ import e3n.com.admin.catalogo.infrastructure.configuration.WebServerConfig;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.server.WebServer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.AbstractEnvironment;
-import org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext;
 
 import java.util.List;
 

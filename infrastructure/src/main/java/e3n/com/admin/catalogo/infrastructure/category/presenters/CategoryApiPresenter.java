@@ -1,7 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.category.presenters;
 
-import e3n.com.admin.catalogo.application.category.retrieve.get.CategoryOutput;
-import e3n.com.admin.catalogo.application.category.retrieve.list.CategoryListOutput;
+import com.E3N.admin.catalogo.application.category.retrieve.get.CategoryOutput;
+import com.E3N.admin.catalogo.application.category.retrieve.list.CategoryListOutput;
 import e3n.com.admin.catalogo.infrastructure.category.models.CategoryListResponse;
 import e3n.com.admin.catalogo.infrastructure.category.models.CategoryResponse;
 

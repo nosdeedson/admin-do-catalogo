@@ -1,5 +1,6 @@
 package e3n.com.admin.catalogo.application.castmember.delete;
 
+import com.E3N.admin.catalogo.application.castmember.delete.DeleteCastMemberUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.domain.castmember.CastMember;
 import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
