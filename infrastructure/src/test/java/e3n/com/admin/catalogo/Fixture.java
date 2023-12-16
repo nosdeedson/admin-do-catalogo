@@ -45,8 +45,9 @@ public class Fixture {
         return UUID.randomUUID().toString();
     }
 
-    public static Integer year() {
-        return random.nextInt(2020, 2030);
+    public static Year year() {
+        final var inteiro = random.nextInt(2020, 2030);
+        return Year.of(inteiro);
     }
 
     public static double duration() {
@@ -81,7 +82,7 @@ public class Fixture {
         return Video.newVideo(
                 "title",
                 "descripion",
-                Year.of(year()),
+                year(),
                 duration(),
                 bool(),
                 bool(),
@@ -154,7 +155,7 @@ public class Fixture {
         private static final Video SYSTEM_DESIGN = Video.newVideo(
                 "System Design no Mercado Livre na prática",
                 description(),
-                Year.of(Fixture.year()),
+                Fixture.year(),
                 Fixture.duration(),
                 bool(),
                 bool(),

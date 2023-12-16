@@ -1,11 +1,16 @@
 package e3n.com.admin.catalogo.infrastructure.video;
 
+import e3n.com.admin.catalogo.domain.Identifier;
 import e3n.com.admin.catalogo.domain.exceptions.DomainException;
 import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
 import e3n.com.admin.catalogo.domain.pagination.Pagination;
+import e3n.com.admin.catalogo.domain.utils.CollectionsUtils;
 import e3n.com.admin.catalogo.domain.video.*;
+import e3n.com.admin.catalogo.infrastructure.utils.SqlUtils;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -33,14 +38,31 @@ public class DefaultVideoGateway implements VideoGateway {
 
     @Override
     public Optional<Video> findById(VideoID id) {
-        final var fromBD =
-                this.videoRepository.findById(id.getValue()).orElseThrow(() -> NotFoundException.with(Video.class, id));
-        return Optional.ofNullable(fromBD.toAggregate());
+        return this.videoRepository.findById(id.getValue())
+                .map(VideoJpaEntity::toAggregate);
     }
 
     @Override
     public Pagination<VideoPreview> findAll(VideoSearchQuery query) {
-        return null;
+        final var page = PageRequest.of(
+                query.page(),
+                query.perPage(),
+                Sort.by(Sort.Direction.fromString(query.direction()), query.sort())
+        );
+
+        final var all = this.videoRepository.findAll(
+                SqlUtils.like(SqlUtils.upper(query.terms())),
+                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.castMembers(), Identifier::getValue)),
+                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.categories(), Identifier::getValue)),
+                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.genres(), Identifier::getValue)),
+                page
+        );
+        return new Pagination<>(
+                all.getNumber(),
+                all.getSize(),
+                all.getTotalElements(),
+                all.toList()
+        );
     }
 
     @Override

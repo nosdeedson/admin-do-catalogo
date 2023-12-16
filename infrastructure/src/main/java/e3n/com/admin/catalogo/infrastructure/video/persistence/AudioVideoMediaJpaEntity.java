@@ -25,6 +25,7 @@ public class AudioVideoMediaJpaEntity {
     private String encodedPath;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "media_status", nullable = false)
     private MediaStatus status;
 
     public AudioVideoMediaJpaEntity() {

@@ -58,5 +58,5 @@ CREATE TABLE video_cast_member(
     cast_member_id CHAR(32) NOT NULL,
     CONSTRAINT idx_vcm_video_genre UNIQUE (video_id, cast_member_id),
     CONSTRAINT fk_vcm_video_id FOREIGN KEY (video_id) REFERENCES video (id),
-    CONSTRAINT fk_vcm_genre_id FOREIGN KEY (cast_member_id) REFERENCES cast_member (id)
+    CONSTRAINT fk_vcm_cast_member_id FOREIGN KEY (cast_member_id) REFERENCES cast_member (id)
 );
