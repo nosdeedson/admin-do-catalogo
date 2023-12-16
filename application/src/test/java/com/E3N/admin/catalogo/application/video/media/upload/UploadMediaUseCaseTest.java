@@ -2,11 +2,11 @@ package com.E3N.admin.catalogo.application.video.media.upload;
 
 import com.E3N.admin.catalogo.application.Fixture;
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.video.MediaResourceGateway;
-import e3n.com.admin.catalogo.domain.video.VideoGateway;
-import e3n.com.admin.catalogo.domain.video.VideoMediaType;
-import e3n.com.admin.catalogo.domain.video.VideoResource;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.video.MediaResourceGateway;
+import com.E3N.admin.catalogo.domain.video.VideoGateway;
+import com.E3N.admin.catalogo.domain.video.VideoMediaType;
+import com.E3N.admin.catalogo.domain.video.VideoResource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.AdditionalAnswers;

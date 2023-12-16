@@ -1,12 +1,12 @@
 package e3n.com.admin.catalogo.infrastructure.video.persistence;
 
 
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
-import e3n.com.admin.catalogo.domain.video.Rating;
-import e3n.com.admin.catalogo.domain.video.Video;
-import e3n.com.admin.catalogo.domain.video.VideoID;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.video.Rating;
+import com.E3N.admin.catalogo.domain.video.Video;
+import com.E3N.admin.catalogo.domain.video.VideoID;
 
 import javax.persistence.*;
 import java.time.Instant;

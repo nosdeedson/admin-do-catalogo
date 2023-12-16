@@ -1,7 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.api;
 
 
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
 import e3n.com.admin.catalogo.infrastructure.castmember.models.CastMemberListResponse;
 import e3n.com.admin.catalogo.infrastructure.castmember.models.CastMemberResponse;
 import e3n.com.admin.catalogo.infrastructure.castmember.models.CreateCastMemberRequest;

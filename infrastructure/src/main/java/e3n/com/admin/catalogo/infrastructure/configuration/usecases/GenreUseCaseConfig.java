@@ -10,8 +10,8 @@ import com.E3N.admin.catalogo.application.genre.retrieve.list.DefaultListGenreUs
 import com.E3N.admin.catalogo.application.genre.retrieve.list.ListGenreUseCase;
 import com.E3N.admin.catalogo.application.genre.update.DefaultUpdateGenreUseCase;
 import com.E3N.admin.catalogo.application.genre.update.UpdateGenreUseCase;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

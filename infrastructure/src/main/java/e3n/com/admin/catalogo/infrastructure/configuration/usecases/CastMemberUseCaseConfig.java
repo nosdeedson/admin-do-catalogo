@@ -11,7 +11,7 @@ import com.E3N.admin.catalogo.application.castmember.retrieve.list.DefaultListCa
 import com.E3N.admin.catalogo.application.castmember.retrieve.list.ListCastMembersUseCase;
 import com.E3N.admin.catalogo.application.castmember.update.DefaultUpdateCastMemberUseCase;
 import com.E3N.admin.catalogo.application.castmember.update.UpdateCastMemberUseCase;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

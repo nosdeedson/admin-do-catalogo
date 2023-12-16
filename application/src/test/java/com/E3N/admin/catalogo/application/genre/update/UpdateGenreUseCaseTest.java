@@ -1,12 +1,12 @@
 package com.E3N.admin.catalogo.application.genre.update;
 
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.utils.StringUtils;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.utils.StringUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.AdditionalAnswers;

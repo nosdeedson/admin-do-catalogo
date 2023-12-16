@@ -1,10 +1,10 @@
 package e3n.com.admin.catalogo.infrastructure.category;
 
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import e3n.com.admin.catalogo.infrastructure.utils.SpecificationUtils;

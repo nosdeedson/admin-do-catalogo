@@ -1,10 +1,10 @@
 package e3n.com.admin.catalogo.infrastructure.castmember;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMember;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.castmember.CastMember;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberRepository;
 import e3n.com.admin.catalogo.infrastructure.utils.SpecificationUtils;

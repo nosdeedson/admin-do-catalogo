@@ -1,8 +1,8 @@
 package com.E3N.admin.catalogo.application.castmember.retrieve.list;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 
 import java.util.Objects;
 

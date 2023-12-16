@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.castmember.update;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
 
 public record UpdateCastMemberCommand(
         String id,

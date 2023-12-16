@@ -1,9 +1,9 @@
 package com.E3N.admin.catalogo.application.category.update;
 
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

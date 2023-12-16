@@ -1,10 +1,10 @@
 package com.E3N.admin.catalogo.application.genre.retrieve.list;
 
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -1,7 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.video.persistence;
 
-import e3n.com.admin.catalogo.domain.video.AudioVideoMedia;
-import e3n.com.admin.catalogo.domain.video.MediaStatus;
+import com.E3N.admin.catalogo.domain.video.AudioVideoMedia;
+import com.E3N.admin.catalogo.domain.video.MediaStatus;
 
 import javax.persistence.*;
 

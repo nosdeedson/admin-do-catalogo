@@ -1,8 +1,8 @@
 package com.E3N.admin.catalogo.application.category.retrieve.list;
 
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 
 public class DefaultListCategoriesUseCase extends ListCategoriesUseCase{
 

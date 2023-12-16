@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.video.media.update;
 
-import e3n.com.admin.catalogo.domain.video.MediaStatus;
+import com.E3N.admin.catalogo.domain.video.MediaStatus;
 
 public record UpdateMeidaStatusCommand(
         MediaStatus status,

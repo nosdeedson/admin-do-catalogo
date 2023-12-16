@@ -1,6 +1,6 @@
 package e3n.com.admin.catalogo.infrastructure.api;
 
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
 import e3n.com.admin.catalogo.infrastructure.genre.models.CreateGenreRequest;
 import e3n.com.admin.catalogo.infrastructure.genre.models.GenreListResponse;
 import e3n.com.admin.catalogo.infrastructure.genre.models.GenreResponse;

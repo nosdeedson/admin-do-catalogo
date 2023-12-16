@@ -7,8 +7,8 @@ import com.E3N.admin.catalogo.application.castmember.retrieve.get.GetCastMemberB
 import com.E3N.admin.catalogo.application.castmember.retrieve.list.ListCastMembersUseCase;
 import com.E3N.admin.catalogo.application.castmember.update.UpdateCastMemberCommand;
 import com.E3N.admin.catalogo.application.castmember.update.UpdateCastMemberUseCase;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.api.CastMemberAPI;
 import e3n.com.admin.catalogo.infrastructure.castmember.models.CastMemberListResponse;
 import e3n.com.admin.catalogo.infrastructure.castmember.models.CastMemberResponse;

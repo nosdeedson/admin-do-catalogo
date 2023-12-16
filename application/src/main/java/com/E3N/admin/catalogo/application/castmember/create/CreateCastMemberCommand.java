@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.castmember.create;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
 
 public record CreateCastMemberCommand(
         String name,

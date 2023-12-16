@@ -1,20 +1,14 @@
 package e3n.com.admin.catalogo.infrastructure.category;
 
 import e3n.com.admin.catalogo.MYSQLGatewayTest;
-import e3n.com.admin.catalogo.MySqlCleanUpExtension;
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 import java.util.Optional;

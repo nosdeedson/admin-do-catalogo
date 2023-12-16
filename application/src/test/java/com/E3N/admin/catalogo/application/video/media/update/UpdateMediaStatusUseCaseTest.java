@@ -2,10 +2,10 @@ package com.E3N.admin.catalogo.application.video.media.update;
 
 import com.E3N.admin.catalogo.application.Fixture;
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.video.MediaStatus;
-import e3n.com.admin.catalogo.domain.video.Video;
-import e3n.com.admin.catalogo.domain.video.VideoGateway;
-import e3n.com.admin.catalogo.domain.video.VideoMediaType;
+import com.E3N.admin.catalogo.domain.video.MediaStatus;
+import com.E3N.admin.catalogo.domain.video.Video;
+import com.E3N.admin.catalogo.domain.video.VideoGateway;
+import com.E3N.admin.catalogo.domain.video.VideoMediaType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;

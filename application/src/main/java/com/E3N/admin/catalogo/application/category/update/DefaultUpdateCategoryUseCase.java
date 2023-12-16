@@ -1,11 +1,11 @@
 package com.E3N.admin.catalogo.application.category.update;
 
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.validation.Error;
-import e3n.com.admin.catalogo.domain.validation.handler.Notification;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.validation.Error;
+import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 import io.vavr.API;
 import io.vavr.control.Either;
 

@@ -1,8 +1,8 @@
 package com.E3N.admin.catalogo.application.category.create;
 
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.validation.handler.Notification;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 import io.vavr.control.Either;
 
 import static io.vavr.API.*;

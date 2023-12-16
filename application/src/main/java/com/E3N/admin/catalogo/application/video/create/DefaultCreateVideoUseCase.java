@@ -1,17 +1,18 @@
 package com.E3N.admin.catalogo.application.video.create;
 
-import e3n.com.admin.catalogo.domain.Identifier;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.exceptions.InternalErrorException;
-import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
-import e3n.com.admin.catalogo.domain.validation.Error;
-import e3n.com.admin.catalogo.domain.validation.ValidationHandler;
-import e3n.com.admin.catalogo.domain.validation.handler.Notification;
+import com.E3N.admin.catalogo.domain.video.*;
+import com.E3N.admin.catalogo.domain.Identifier;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.exceptions.InternalErrorException;
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.validation.Error;
+import com.E3N.admin.catalogo.domain.validation.ValidationHandler;
+import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 import e3n.com.admin.catalogo.domain.video.*;
 
 import java.time.Year;

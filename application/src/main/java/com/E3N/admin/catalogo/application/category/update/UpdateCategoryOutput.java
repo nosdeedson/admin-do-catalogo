@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.category.update;
 
-import e3n.com.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.Category;
 
 public record UpdateCategoryOutput(
         String id

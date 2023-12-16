@@ -2,11 +2,11 @@ package e3n.com.admin.catalogo.infrastructure.genre;
 
 
 import e3n.com.admin.catalogo.MYSQLGatewayTest;
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.category.CategoryMySQLGateway;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 @MYSQLGatewayTest
 public class GenreMySQLGatewayTest {

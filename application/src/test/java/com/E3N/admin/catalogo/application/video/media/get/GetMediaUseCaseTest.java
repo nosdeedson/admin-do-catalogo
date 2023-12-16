@@ -2,9 +2,9 @@ package com.E3N.admin.catalogo.application.video.media.get;
 
 import com.E3N.admin.catalogo.application.Fixture;
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.video.MediaResourceGateway;
-import e3n.com.admin.catalogo.domain.video.VideoID;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.video.MediaResourceGateway;
+import com.E3N.admin.catalogo.domain.video.VideoID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

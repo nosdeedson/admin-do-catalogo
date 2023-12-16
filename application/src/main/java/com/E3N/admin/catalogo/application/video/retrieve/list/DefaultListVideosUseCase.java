@@ -1,8 +1,8 @@
 package com.E3N.admin.catalogo.application.video.retrieve.list;
 
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.video.VideoGateway;
-import e3n.com.admin.catalogo.domain.video.VideoSearchQuery;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.video.VideoGateway;
+import com.E3N.admin.catalogo.domain.video.VideoSearchQuery;
 
 import java.util.Objects;
 

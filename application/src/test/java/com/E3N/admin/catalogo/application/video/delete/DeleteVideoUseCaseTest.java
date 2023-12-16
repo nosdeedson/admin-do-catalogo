@@ -1,10 +1,10 @@
 package com.E3N.admin.catalogo.application.video.delete;
 
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.exceptions.InternalErrorException;
-import e3n.com.admin.catalogo.domain.video.MediaResourceGateway;
-import e3n.com.admin.catalogo.domain.video.VideoGateway;
-import e3n.com.admin.catalogo.domain.video.VideoID;
+import com.E3N.admin.catalogo.domain.exceptions.InternalErrorException;
+import com.E3N.admin.catalogo.domain.video.MediaResourceGateway;
+import com.E3N.admin.catalogo.domain.video.VideoGateway;
+import com.E3N.admin.catalogo.domain.video.VideoID;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

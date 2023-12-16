@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.video.media.upload;
 
-import e3n.com.admin.catalogo.domain.video.Video;
-import e3n.com.admin.catalogo.domain.video.VideoMediaType;
+import com.E3N.admin.catalogo.domain.video.Video;
+import com.E3N.admin.catalogo.domain.video.VideoMediaType;
 
 public record UploadMediaOutput(
         String videoId,

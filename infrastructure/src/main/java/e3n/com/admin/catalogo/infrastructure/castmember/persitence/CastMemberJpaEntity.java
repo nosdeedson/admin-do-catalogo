@@ -1,8 +1,8 @@
 package e3n.com.admin.catalogo.infrastructure.castmember.persitence;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMember;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
+import com.E3N.admin.catalogo.domain.castmember.CastMember;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
 
 import javax.persistence.*;
 import java.time.Instant;

@@ -1,6 +1,6 @@
 package e3n.com.admin.catalogo.infrastructure.video.persistence;
 
-import e3n.com.admin.catalogo.domain.video.ImageMedia;
+import com.E3N.admin.catalogo.domain.video.ImageMedia;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

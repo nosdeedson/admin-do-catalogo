@@ -1,11 +1,12 @@
 package com.E3N.admin.catalogo.application;
 
+import com.E3N.admin.catalogo.domain.video.*;
 import com.github.javafaker.Faker;
-import e3n.com.admin.catalogo.domain.castmember.CastMember;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.utils.IdUtils;
+import com.E3N.admin.catalogo.domain.castmember.CastMember;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.utils.IdUtils;
 import e3n.com.admin.catalogo.domain.video.*;
 
 import java.time.Year;

@@ -2,12 +2,12 @@ package e3n.com.admin.catalogo.application.genre.retrieve.get;
 
 import com.E3N.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

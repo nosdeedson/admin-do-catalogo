@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.category.create;
 
-import e3n.com.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.Category;
 
 public record CreateCategoryOutput(String id) {
 

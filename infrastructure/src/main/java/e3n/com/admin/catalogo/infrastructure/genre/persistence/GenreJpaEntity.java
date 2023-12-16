@@ -1,9 +1,9 @@
 package e3n.com.admin.catalogo.infrastructure.genre.persistence;
 
 
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
 
 import javax.persistence.*;
 import java.time.Instant;

@@ -2,8 +2,8 @@ package com.E3N.admin.catalogo.application.castmember.create;
 
 import com.E3N.admin.catalogo.application.Fixture;
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
-import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.AdditionalAnswers;

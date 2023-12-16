@@ -1,6 +1,6 @@
 package e3n.com.admin.catalogo.infrastructure;
 
-import e3n.com.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.Category;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import e3n.com.admin.catalogo.infrastructure.configuration.WebServerConfig;

@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.category.delete;
 
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
 
 import java.util.Objects;
 

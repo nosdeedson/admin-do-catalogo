@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.video.create;
 
-import e3n.com.admin.catalogo.domain.video.Resource;
+import com.E3N.admin.catalogo.domain.video.Resource;
 
 import java.util.Optional;
 import java.util.Set;

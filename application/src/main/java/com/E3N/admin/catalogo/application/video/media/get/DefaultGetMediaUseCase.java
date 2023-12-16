@@ -1,10 +1,10 @@
 package com.E3N.admin.catalogo.application.video.media.get;
 
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.validation.Error;
-import e3n.com.admin.catalogo.domain.video.MediaResourceGateway;
-import e3n.com.admin.catalogo.domain.video.VideoID;
-import e3n.com.admin.catalogo.domain.video.VideoMediaType;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.validation.Error;
+import com.E3N.admin.catalogo.domain.video.MediaResourceGateway;
+import com.E3N.admin.catalogo.domain.video.VideoID;
+import com.E3N.admin.catalogo.domain.video.VideoMediaType;
 
 import java.util.Objects;
 

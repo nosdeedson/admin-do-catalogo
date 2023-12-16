@@ -1,11 +1,11 @@
 package com.E3N.admin.catalogo.application.video.retrieve.get;
 
-import e3n.com.admin.catalogo.domain.Identifier;
-import e3n.com.admin.catalogo.domain.utils.CollectionsUtils;
-import e3n.com.admin.catalogo.domain.video.AudioVideoMedia;
-import e3n.com.admin.catalogo.domain.video.ImageMedia;
-import e3n.com.admin.catalogo.domain.video.Rating;
-import e3n.com.admin.catalogo.domain.video.Video;
+import com.E3N.admin.catalogo.domain.Identifier;
+import com.E3N.admin.catalogo.domain.utils.CollectionsUtils;
+import com.E3N.admin.catalogo.domain.video.AudioVideoMedia;
+import com.E3N.admin.catalogo.domain.video.ImageMedia;
+import com.E3N.admin.catalogo.domain.video.Rating;
+import com.E3N.admin.catalogo.domain.video.Video;
 
 import java.time.Instant;
 import java.util.Set;

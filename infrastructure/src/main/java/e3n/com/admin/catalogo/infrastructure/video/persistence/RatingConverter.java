@@ -1,6 +1,6 @@
 package e3n.com.admin.catalogo.infrastructure.video.persistence;
 
-import e3n.com.admin.catalogo.domain.video.Rating;
+import com.E3N.admin.catalogo.domain.video.Rating;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

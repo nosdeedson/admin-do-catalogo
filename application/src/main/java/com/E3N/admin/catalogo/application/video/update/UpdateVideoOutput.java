@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.video.update;
 
-import e3n.com.admin.catalogo.domain.video.Video;
+import com.E3N.admin.catalogo.domain.video.Video;
 
 public record UpdateVideoOutput(
         String id

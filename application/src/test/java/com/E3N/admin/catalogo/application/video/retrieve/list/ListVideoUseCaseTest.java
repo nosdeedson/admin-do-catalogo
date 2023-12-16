@@ -2,7 +2,10 @@ package com.E3N.admin.catalogo.application.video.retrieve.list;
 
 import com.E3N.admin.catalogo.application.Fixture;
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.video.VideoGateway;
+import com.E3N.admin.catalogo.domain.video.VideoPreview;
+import com.E3N.admin.catalogo.domain.video.VideoSearchQuery;
 import e3n.com.admin.catalogo.domain.video.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

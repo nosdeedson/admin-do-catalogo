@@ -1,6 +1,6 @@
 package com.E3N.admin.catalogo.application.video.media.upload;
 
-import e3n.com.admin.catalogo.domain.video.VideoResource;
+import com.E3N.admin.catalogo.domain.video.VideoResource;
 
 public record UploadMediaCommand(
         String videoId,

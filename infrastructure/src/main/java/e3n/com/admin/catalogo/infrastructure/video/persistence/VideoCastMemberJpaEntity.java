@@ -1,7 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.video.persistence;
 
 
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
 
 import javax.persistence.*;
 import java.util.Objects;

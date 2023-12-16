@@ -10,7 +10,7 @@ import com.E3N.admin.catalogo.application.category.retrieve.list.DefaultListCate
 import com.E3N.admin.catalogo.application.category.retrieve.list.ListCategoriesUseCase;
 import com.E3N.admin.catalogo.application.category.update.DefaultUpdateCategoryUseCase;
 import com.E3N.admin.catalogo.application.category.update.UpdateCategoryUseCase;
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -2,11 +2,11 @@ package e3n.com.admin.catalogo.application.castmember.retrieve.get;
 
 import com.E3N.admin.catalogo.application.castmember.retrieve.get.GetCastMemberByIdUseCase;
 import e3n.com.admin.catalogo.IntegrationTest;
-import e3n.com.admin.catalogo.domain.castmember.CastMember;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.castmember.CastMember;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.castmember.persitence.CastMemberRepository;
 import org.junit.jupiter.api.Assertions;

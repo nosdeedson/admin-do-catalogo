@@ -2,9 +2,9 @@ package e3n.com.admin.catalogo.application.genre.delete;
 
 import e3n.com.admin.catalogo.IntegrationTest;
 import com.E3N.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

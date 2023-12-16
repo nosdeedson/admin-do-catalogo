@@ -1,8 +1,8 @@
 package e3n.com.admin.catalogo.infrastructure.category.persistence;
 
 
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

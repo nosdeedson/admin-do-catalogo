@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.castmember.delete;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMemberGateway;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
 
 import java.util.Objects;
 

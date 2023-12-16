@@ -1,10 +1,10 @@
 package e3n.com.admin.catalogo.infrastructure.genre;
 
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import e3n.com.admin.catalogo.infrastructure.utils.SpecificationUtils;

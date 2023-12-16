@@ -1,10 +1,9 @@
 package e3n.com.admin.catalogo.infrastructure.video;
 
-import e3n.com.admin.catalogo.domain.Identifier;
-import e3n.com.admin.catalogo.domain.exceptions.DomainException;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.utils.CollectionsUtils;
+import com.E3N.admin.catalogo.domain.video.*;
+import com.E3N.admin.catalogo.domain.Identifier;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.utils.CollectionsUtils;
 import e3n.com.admin.catalogo.domain.video.*;
 import e3n.com.admin.catalogo.infrastructure.utils.SqlUtils;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoJpaEntity;

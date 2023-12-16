@@ -1,6 +1,7 @@
 package com.E3N.admin.catalogo.application.video.media.update;
 
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.video.*;
 import e3n.com.admin.catalogo.domain.video.*;
 
 import java.util.Objects;

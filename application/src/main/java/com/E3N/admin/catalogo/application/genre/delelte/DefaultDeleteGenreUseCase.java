@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.genre.delelte;
 
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
 
 import java.util.Objects;
 

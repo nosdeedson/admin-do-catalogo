@@ -1,8 +1,8 @@
 package e3n.com.admin.catalogo.infrastructure.api.controllers;
 
-import e3n.com.admin.catalogo.domain.exceptions.DomainException;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.validation.Error;
+import com.E3N.admin.catalogo.domain.exceptions.DomainException;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.validation.Error;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

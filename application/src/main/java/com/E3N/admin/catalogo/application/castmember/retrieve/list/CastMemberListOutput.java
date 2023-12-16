@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.castmember.retrieve.list;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMember;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
+import com.E3N.admin.catalogo.domain.castmember.CastMember;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
 
 import java.time.Instant;
 

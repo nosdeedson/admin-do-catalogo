@@ -9,9 +9,9 @@ import com.E3N.admin.catalogo.application.category.retrieve.list.ListCategoriesU
 import com.E3N.admin.catalogo.application.category.update.UpdateCategoryCommand;
 import com.E3N.admin.catalogo.application.category.update.UpdateCategoryOutput;
 import com.E3N.admin.catalogo.application.category.update.UpdateCategoryUseCase;
-import e3n.com.admin.catalogo.domain.pagination.Pagination;
-import e3n.com.admin.catalogo.domain.pagination.SearchQuery;
-import e3n.com.admin.catalogo.domain.validation.handler.Notification;
+import com.E3N.admin.catalogo.domain.pagination.Pagination;
+import com.E3N.admin.catalogo.domain.pagination.SearchQuery;
+import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 import e3n.com.admin.catalogo.infrastructure.api.CategoryAPI;
 import e3n.com.admin.catalogo.infrastructure.category.models.CategoryListResponse;
 import e3n.com.admin.catalogo.infrastructure.category.models.CategoryResponse;

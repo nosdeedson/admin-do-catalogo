@@ -1,15 +1,15 @@
 package com.E3N.admin.catalogo.application.genre.update;
 
-import e3n.com.admin.catalogo.domain.category.CategoryGateway;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
-import e3n.com.admin.catalogo.domain.exceptions.NotFoundException;
-import e3n.com.admin.catalogo.domain.exceptions.NotificationException;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.genre.GenreGateway;
-import e3n.com.admin.catalogo.domain.genre.GenreId;
-import e3n.com.admin.catalogo.domain.validation.Error;
-import e3n.com.admin.catalogo.domain.validation.ValidationHandler;
-import e3n.com.admin.catalogo.domain.validation.handler.Notification;
+import com.E3N.admin.catalogo.domain.category.CategoryGateway;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.genre.GenreGateway;
+import com.E3N.admin.catalogo.domain.genre.GenreId;
+import com.E3N.admin.catalogo.domain.validation.Error;
+import com.E3N.admin.catalogo.domain.validation.ValidationHandler;
+import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 
 import java.util.ArrayList;
 import java.util.List;

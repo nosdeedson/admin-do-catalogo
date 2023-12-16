@@ -1,6 +1,6 @@
 package e3n.com.admin.catalogo.infrastructure.video.persistence;
 
-import e3n.com.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
 
 import javax.persistence.*;
 import java.util.Objects;

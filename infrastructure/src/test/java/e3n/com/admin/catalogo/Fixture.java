@@ -1,12 +1,12 @@
 package e3n.com.admin.catalogo;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMember;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberType;
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.genre.Genre;
-import e3n.com.admin.catalogo.domain.utils.IdUtils;
+import com.E3N.admin.catalogo.domain.castmember.CastMember;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.genre.Genre;
+import com.E3N.admin.catalogo.domain.utils.IdUtils;
+import com.E3N.admin.catalogo.domain.video.*;
 import e3n.com.admin.catalogo.domain.video.*;
-import org.aspectj.lang.annotation.SuppressAjWarnings;
 
 import java.time.Year;
 import java.util.Random;

@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.castmember.create;
 
-import e3n.com.admin.catalogo.domain.castmember.CastMember;
-import e3n.com.admin.catalogo.domain.castmember.CastMemberID;
+import com.E3N.admin.catalogo.domain.castmember.CastMember;
+import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
 
 public record CreateCastMemberOutput(
         String id

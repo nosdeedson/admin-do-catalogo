@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.category.retrieve.list;
 
-import e3n.com.admin.catalogo.domain.category.Category;
-import e3n.com.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.category.Category;
+import com.E3N.admin.catalogo.domain.category.CategoryID;
 
 import java.time.Instant;
 

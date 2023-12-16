@@ -1,6 +1,6 @@
 package e3n.com.admin.catalogo.infrastructure.video.persistence;
 
-import e3n.com.admin.catalogo.domain.video.VideoPreview;
+import com.E3N.admin.catalogo.domain.video.VideoPreview;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

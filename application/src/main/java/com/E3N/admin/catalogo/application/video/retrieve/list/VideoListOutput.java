@@ -1,7 +1,7 @@
 package com.E3N.admin.catalogo.application.video.retrieve.list;
 
-import e3n.com.admin.catalogo.domain.video.Video;
-import e3n.com.admin.catalogo.domain.video.VideoPreview;
+import com.E3N.admin.catalogo.domain.video.Video;
+import com.E3N.admin.catalogo.domain.video.VideoPreview;
 
 import java.time.Instant;
 
