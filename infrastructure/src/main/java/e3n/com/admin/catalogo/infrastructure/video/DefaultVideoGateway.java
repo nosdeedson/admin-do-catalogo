@@ -4,7 +4,6 @@ import com.E3N.admin.catalogo.domain.video.*;
 import com.E3N.admin.catalogo.domain.Identifier;
 import com.E3N.admin.catalogo.domain.pagination.Pagination;
 import com.E3N.admin.catalogo.domain.utils.CollectionsUtils;
-import e3n.com.admin.catalogo.domain.video.*;
 import e3n.com.admin.catalogo.infrastructure.utils.SqlUtils;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoRepository;
@@ -49,19 +48,20 @@ public class DefaultVideoGateway implements VideoGateway {
                 Sort.by(Sort.Direction.fromString(query.direction()), query.sort())
         );
 
-        final var all = this.videoRepository.findAll(
-                SqlUtils.like(SqlUtils.upper(query.terms())),
-                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.castMembers(), Identifier::getValue)),
-                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.categories(), Identifier::getValue)),
-                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.genres(), Identifier::getValue)),
-                page
-        );
-        return new Pagination<>(
-                all.getNumber(),
-                all.getSize(),
-                all.getTotalElements(),
-                all.toList()
-        );
+//        final var all = this.videoRepository.findAll(
+//                SqlUtils.like(SqlUtils.upper(query.terms())),
+//                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.castMembers(), Identifier::getValue)),
+//                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.categories(), Identifier::getValue)),
+//                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.genres(), Identifier::getValue)),
+//                page
+//        );
+//        return new Pagination<>(
+//                all.getNumber(),
+//                all.getSize(),
+//                all.getTotalElements(),
+//                all.toList()
+//        );
+        return null;
     }
 
     @Override

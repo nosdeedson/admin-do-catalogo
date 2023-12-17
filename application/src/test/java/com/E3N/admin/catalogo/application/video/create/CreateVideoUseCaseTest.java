@@ -11,7 +11,6 @@ import com.E3N.admin.catalogo.domain.genre.GenreGateway;
 import com.E3N.admin.catalogo.domain.genre.GenreId;
 import com.E3N.admin.catalogo.domain.utils.StringUtils;
 import com.E3N.admin.catalogo.domain.video.*;
-import e3n.com.admin.catalogo.domain.video.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.AdditionalAnswers;

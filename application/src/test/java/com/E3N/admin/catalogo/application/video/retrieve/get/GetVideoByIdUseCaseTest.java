@@ -11,7 +11,6 @@ import com.E3N.admin.catalogo.domain.video.Video;
 import com.E3N.admin.catalogo.domain.video.VideoGateway;
 import com.E3N.admin.catalogo.domain.video.VideoID;
 import com.E3N.admin.catalogo.domain.video.VideoMediaType;
-import e3n.com.admin.catalogo.domain.video.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

@@ -15,7 +15,6 @@ import com.E3N.admin.catalogo.domain.genre.GenreId;
 import com.E3N.admin.catalogo.domain.validation.Error;
 import com.E3N.admin.catalogo.domain.validation.ValidationHandler;
 import com.E3N.admin.catalogo.domain.validation.handler.Notification;
-import e3n.com.admin.catalogo.domain.video.*;
 
 import java.time.Year;
 import java.util.ArrayList;

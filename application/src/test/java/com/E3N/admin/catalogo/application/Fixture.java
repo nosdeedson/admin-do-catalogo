@@ -7,7 +7,6 @@ import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
 import com.E3N.admin.catalogo.domain.category.Category;
 import com.E3N.admin.catalogo.domain.genre.Genre;
 import com.E3N.admin.catalogo.domain.utils.IdUtils;
-import e3n.com.admin.catalogo.domain.video.*;
 
 import java.time.Year;
 import java.util.Set;
