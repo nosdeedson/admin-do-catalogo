@@ -5,6 +5,7 @@ import com.E3N.admin.catalogo.domain.category.CategoryID;
 import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
 import com.E3N.admin.catalogo.domain.validation.Error;
 
+@SuppressWarnings("all")
 public class DefaultGetCategoryByIdUseCase extends GetCategoryByIdUseCase{
 
     private CategoryGateway categoryGateway;

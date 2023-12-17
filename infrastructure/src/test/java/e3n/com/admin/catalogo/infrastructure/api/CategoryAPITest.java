@@ -36,6 +36,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings("all")
 @ControllerTest(controllers = CategoryAPI.class)
 public class CategoryAPITest {
 

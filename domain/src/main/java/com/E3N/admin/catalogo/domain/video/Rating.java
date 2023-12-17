@@ -3,6 +3,7 @@ package com.E3N.admin.catalogo.domain.video;
 import java.util.Arrays;
 import java.util.Optional;
 
+@SuppressWarnings("all")
 public enum Rating {
     ER("ER"),
     L("L"),

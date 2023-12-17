@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@SuppressWarnings("all")
 public class Video extends AggregateRoot<VideoID> {
 
     private String title;

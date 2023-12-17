@@ -4,6 +4,7 @@ import com.E3N.admin.catalogo.domain.utils.StringUtils;
 import com.E3N.admin.catalogo.domain.validation.ValidationHandler;
 import com.E3N.admin.catalogo.domain.validation.Validator;
 
+@SuppressWarnings("all")
 public class GenreValidator extends Validator {
 
     private static final int NAME_MAX_LENGTH = 255;

@@ -2,6 +2,8 @@ package e3n.com.admin.catalogo.infrastructure.utils;
 
 import org.springframework.data.jpa.domain.Specification;
 
+
+@SuppressWarnings("all")
 public class SpecificationUtils {
 
     private SpecificationUtils() {

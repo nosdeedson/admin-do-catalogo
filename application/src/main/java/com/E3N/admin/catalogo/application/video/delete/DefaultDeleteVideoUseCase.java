@@ -6,6 +6,7 @@ import com.E3N.admin.catalogo.domain.video.VideoID;
 
 import java.util.Objects;
 
+@SuppressWarnings("all")
 public class DefaultDeleteVideoUseCase extends DeleteVideoUseCase{
 
     private VideoGateway videoGateway;

@@ -7,6 +7,7 @@ import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 
 import java.util.Objects;
 
+@SuppressWarnings("all")
 public non-sealed class DefaultCreateCastMemberUseCase extends CreateCastMemberUseCase{
 
     private CastMemberGateway castMemberGateway;

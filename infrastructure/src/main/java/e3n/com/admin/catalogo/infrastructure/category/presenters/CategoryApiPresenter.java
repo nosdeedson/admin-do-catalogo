@@ -19,7 +19,7 @@ public interface CategoryApiPresenter {
         );
     }
 
-    public static CategoryListResponse present(final CategoryListOutput listOutput){
+    static CategoryListResponse present(final CategoryListOutput listOutput){
         return new CategoryListResponse(
                 listOutput.id().getValue(),
                 listOutput.name(),

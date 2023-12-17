@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Component
 public class DefaultVideoGateway implements VideoGateway {
@@ -47,21 +48,19 @@ public class DefaultVideoGateway implements VideoGateway {
                 query.perPage(),
                 Sort.by(Sort.Direction.fromString(query.direction()), query.sort())
         );
-
-//        final var all = this.videoRepository.findAll(
-//                SqlUtils.like(SqlUtils.upper(query.terms())),
-//                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.castMembers(), Identifier::getValue)),
-//                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.categories(), Identifier::getValue)),
-//                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.genres(), Identifier::getValue)),
-//                page
-//        );
-//        return new Pagination<>(
-//                all.getNumber(),
-//                all.getSize(),
-//                all.getTotalElements(),
-//                all.toList()
-//        );
-        return null;
+        final var all = this.videoRepository.findAll(
+                SqlUtils.like(SqlUtils.upper(query.terms())),
+                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.castMembers(), Identifier::getValue)),
+                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.categories(), Identifier::getValue)),
+                CollectionsUtils.nullIfEmpty(CollectionsUtils.mapTo(query.genres(), Identifier::getValue)),
+                page
+        );
+        return new Pagination<>(
+                all.getNumber(),
+                all.getSize(),
+                all.getTotalElements(),
+                all.toList()
+        );
     }
 
     @Override

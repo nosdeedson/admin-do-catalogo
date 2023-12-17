@@ -5,6 +5,7 @@ import com.E3N.admin.catalogo.domain.video.*;
 
 import java.util.Objects;
 
+@SuppressWarnings("all")
 public class DefaultUpdateMediaUseCase extends UpdateMediaStatusUseCase {
 
     private VideoGateway videoGateway;

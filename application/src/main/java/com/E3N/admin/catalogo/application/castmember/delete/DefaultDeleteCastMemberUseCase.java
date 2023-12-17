@@ -5,6 +5,7 @@ import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
 
 import java.util.Objects;
 
+@SuppressWarnings("all")
 public non-sealed class DefaultDeleteCastMemberUseCase extends DeleteCastMemberUseCase{
 
     private CastMemberGateway gateway;

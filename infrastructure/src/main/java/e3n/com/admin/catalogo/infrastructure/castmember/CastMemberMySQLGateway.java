@@ -18,6 +18,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
+@SuppressWarnings("all")
 @Component
 public class CastMemberMySQLGateway implements CastMemberGateway {
 

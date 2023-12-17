@@ -15,6 +15,7 @@ import com.E3N.admin.catalogo.domain.castmember.CastMemberGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+@SuppressWarnings("all")
 @Configuration
 public class CastMemberUseCaseConfig {
 

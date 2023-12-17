@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Comparator;
 import java.util.List;
 
+@SuppressWarnings("all")
 @MYSQLGatewayTest
 public class GenreMySQLGatewayTest {
 

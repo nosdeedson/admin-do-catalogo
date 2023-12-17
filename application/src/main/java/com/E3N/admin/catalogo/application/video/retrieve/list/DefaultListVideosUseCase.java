@@ -6,6 +6,7 @@ import com.E3N.admin.catalogo.domain.video.VideoSearchQuery;
 
 import java.util.Objects;
 
+@SuppressWarnings("all")
 public class DefaultListVideosUseCase extends ListVideoUseCase{
 
     private VideoGateway videoGateway;

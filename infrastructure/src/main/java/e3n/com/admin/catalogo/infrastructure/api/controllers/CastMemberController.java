@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
+@SuppressWarnings("all")
 @RestController
 public class CastMemberController implements CastMemberAPI {
 

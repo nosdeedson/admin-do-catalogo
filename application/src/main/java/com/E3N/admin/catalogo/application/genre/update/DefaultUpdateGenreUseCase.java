@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("all")
 public class DefaultUpdateGenreUseCase extends UpdateGenreUseCase{
 
     private GenreGateway genreGateway;
