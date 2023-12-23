@@ -63,7 +63,6 @@ public class CreateCastMemberUseCaseIT {
         final var exception = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
         Assertions.assertEquals(expectedErrorMessage, exception.getErrors().get(0).message());
         Assertions.assertEquals(expectedErrorCount, exception.getErrors().size());
-
         Mockito.verify(gateway, Mockito.times(0)).create(Mockito.any());
     }
 

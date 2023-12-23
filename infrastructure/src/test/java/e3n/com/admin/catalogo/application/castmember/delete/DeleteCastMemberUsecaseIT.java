@@ -74,7 +74,6 @@ public class DeleteCastMemberUsecaseIT {
                 .when(gateway).deleteById(Mockito.any());
 
         Assertions.assertThrows(IllegalStateException.class, () -> useCase.execute(member.getId().getValue()));
-
         Mockito.verify(gateway, Mockito.times(1)).deleteById(Mockito.any());
         Assertions.assertEquals(1, repository.count());
     }

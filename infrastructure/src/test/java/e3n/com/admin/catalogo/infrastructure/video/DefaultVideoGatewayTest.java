@@ -93,10 +93,7 @@ public class DefaultVideoGatewayTest {
         final var expectedRating = Fixture.rating();
         final var expectedCategories = Set.of(aulas.getId());
         final var expectedGenres = Set.of(tech.getId());
-        //final var expectedMembers = Set.of(eva.getId());
-
-        // TODO FIND OUT WHY IS NOT SAVING CASTMEMBER_VIDEO
-        final var expectedMembers = Set.<CastMemberID>of();
+        final var expectedMembers = Set.of(eva.getId());
 
 
         final AudioVideoMedia expectedVideo = AudioVideoMedia.with("123", "video", "/media/video");
@@ -122,7 +119,7 @@ public class DefaultVideoGatewayTest {
                 .updateBannerMedia(expectedBanner)
                 .updateThumbnailMedia(expectedThumbnail)
                 .updateThumbnailHalfMedia(expectedThumbnailHalf);
-        System.out.println(video.getCategories());
+
         final var actualVideo = videoGateway.create(video);
 
         Assertions.assertNotNull(actualVideo.getId());
@@ -158,15 +155,36 @@ public class DefaultVideoGatewayTest {
         Assertions.assertEquals(expectedThumbnail.id(), persisted.getThumbnail().getId());
         Assertions.assertEquals(expectedThumbnailHalf.id(), persisted.getThumbnailHalf().getId());
 
+        final var categoriesId =
+                persisted.getCategories().stream().map(videoCategoryJpaEntity -> videoCategoryJpaEntity.getId())
+                        .map(categoryID -> categoryID.getCategoryId()).toList();
+        final var categoriesExpected =
+                expectedCategories.stream().map(CategoryID::getValue).toList();
+
         Assertions.assertTrue(expectedCategories.size() == persisted.getCategories().size()
-                && expectedCategories.containsAll(expectedCategories)
+                && categoriesExpected.containsAll(categoriesId)
         );
 
-        // TODO CONTAINSALL NOT WORKNIG
-        Assertions.assertTrue(expectedGenres.size() == persisted.getGenres().size());
+        final var genresId =
+                persisted.getGenres().stream().map(videoGenreId -> videoGenreId.getId())
+                        .map(genreID -> genreID.getGenreId()).toList();
+
+        final var genresExpected =
+                expectedGenres.stream().map(GenreId::getValue).toList();
+
+        Assertions.assertTrue(expectedGenres.size() == persisted.getGenres().size()
+            && genresExpected.containsAll(genresId)
+        );
+
+        final var membersId =
+                persisted.getMembers().stream().map(videoCastMember -> videoCastMember.getId())
+                        .map(castMemberID -> castMemberID.getCastMemberId()).toList();
+
+        final var membersExpected =
+                expectedMembers.stream().map(CastMemberID::getValue).toList();
 
         Assertions.assertTrue(expectedMembers.size() == persisted.getMembers().size()
-                && expectedMembers.containsAll(persisted.getMembers())
+                && membersExpected.containsAll(membersId)
         );
     }
 
@@ -244,11 +262,7 @@ public class DefaultVideoGatewayTest {
         final var expectedRating = Fixture.rating();
         final var expectedCategories = Set.of(aulas.getId());
         final var expectedGenres = Set.of(tech.getId());
-        //final var expectedMembers = Set.of(eva.getId());
-
-        // TODO FIND OUT WHY IS NOT SAVING CASTMEMBER_VIDEO
-        final var expectedMembers = Set.<CastMemberID>of();
-
+        final var expectedMembers = Set.of(eva.getId());
 
         final AudioVideoMedia expectedVideo = AudioVideoMedia.with("123", "video", "/media/video");
         final AudioVideoMedia expectedTrailer = AudioVideoMedia.with("123", "trailer", "/media/trailer");
@@ -273,8 +287,8 @@ public class DefaultVideoGatewayTest {
         Assertions.assertEquals(expectedTitle, actualVideo.getTitle());
         Assertions.assertEquals(expectedDescription, actualVideo.getDescription());
         Assertions.assertEquals(expectedLaunchYear, actualVideo.getLaunchedAt());
-        // TODO DURATION IS NOT EQUALS FIX IT
-        //Assertions.assertEquals(expectedDuration, BigDecimal.valueOf(actualVideo.getDuration()).setScale(2, RoundingMode.DOWN));
+        Assertions.assertEquals(expectedDuration,
+                BigDecimal.valueOf(actualVideo.getDuration()).setScale(2, RoundingMode.DOWN).doubleValue());
         Assertions.assertEquals(expectedOpened, actualVideo.isOpened());
         Assertions.assertEquals(expectedFinished, actualVideo.isPublished());
         Assertions.assertEquals(expectedRating, actualVideo.getRating());
@@ -292,8 +306,9 @@ public class DefaultVideoGatewayTest {
         Assertions.assertEquals(expectedTitle, persisted.getTitle());
         Assertions.assertEquals(expectedDescription, persisted.getDescription());
         Assertions.assertEquals(expectedLaunchYear, Year.of(persisted.getYearLaunched()));
-        // TODO duration not equals check
-        // Assertions.assertEquals(expectedDuration, BigDecimal.valueOf(persisted.getDuration()).setScale(2, RoundingMode.DOWN));
+        Assertions.assertEquals(expectedDuration,
+                BigDecimal.valueOf(persisted.getDuration()).setScale(2,
+                        RoundingMode.DOWN).doubleValue());
         Assertions.assertEquals(expectedOpened, persisted.isOpened());
         Assertions.assertEquals(expectedFinished, persisted.isPublished());
         Assertions.assertEquals(expectedRating, persisted.getRating());
@@ -302,16 +317,36 @@ public class DefaultVideoGatewayTest {
         Assertions.assertEquals(expectedBanner.id(), persisted.getBanner().getId());
         Assertions.assertEquals(expectedThumbnail.id(), persisted.getThumbnail().getId());
         Assertions.assertEquals(expectedThumbnailHalf.id(), persisted.getThumbnailHalf().getId());
+        final var categoriesId =
+                persisted.getCategories().stream().map(videoCategoryJpaEntity -> videoCategoryJpaEntity.getId())
+                        .map(categoryID -> categoryID.getCategoryId()).toList();
+        final var categoriesExpected =
+                expectedCategories.stream().map(CategoryID::getValue).toList();
 
         Assertions.assertTrue(expectedCategories.size() == persisted.getCategories().size()
-                && expectedCategories.containsAll(expectedCategories)
+                && categoriesExpected.containsAll(categoriesId)
         );
 
-        // TODO CONTAINSALL NOT WORKNIG
-        Assertions.assertTrue(expectedGenres.size() == persisted.getGenres().size());
+        final var genresId =
+                persisted.getGenres().stream().map(videoGenreId -> videoGenreId.getId())
+                        .map(genreID -> genreID.getGenreId()).toList();
+
+        final var genresExpected =
+                expectedGenres.stream().map(GenreId::getValue).toList();
+
+        Assertions.assertTrue(expectedGenres.size() == persisted.getGenres().size()
+                && genresExpected.containsAll(genresId)
+        );
+
+        final var membersId =
+                persisted.getMembers().stream().map(videoCastMember -> videoCastMember.getId())
+                        .map(castMemberID -> castMemberID.getCastMemberId()).toList();
+
+        final var membersExpected =
+                expectedMembers.stream().map(CastMemberID::getValue).toList();
 
         Assertions.assertTrue(expectedMembers.size() == persisted.getMembers().size()
-                && expectedMembers.containsAll(persisted.getMembers())
+                && membersExpected.containsAll(membersId)
         );
     }
 
@@ -367,10 +402,8 @@ public class DefaultVideoGatewayTest {
         final var expectedRating = Fixture.rating();
         final var expectedCategories = Set.of(aulas.getId());
         final var expectedGenres = Set.of(tech.getId());
-        //final var expectedMembers = Set.of(eva.getId());
+        final var expectedMembers = Set.of(eva.getId());
 
-        // TODO FIND OUT WHY IS NOT SAVING CASTMEMBER_VIDEO
-        final var expectedMembers = Set.<CastMemberID>of();
         final AudioVideoMedia expectedVideo = AudioVideoMedia.with("123", "video", "/media/video");
         final AudioVideoMedia expectedTrailer = AudioVideoMedia.with("123", "trailer", "/media/trailer");
 
@@ -402,8 +435,9 @@ public class DefaultVideoGatewayTest {
         Assertions.assertEquals(expectedTitle, persitedVideo.getTitle());
         Assertions.assertEquals(expectedDescription, persitedVideo.getDescription());
         Assertions.assertEquals(expectedLaunchYear, persitedVideo.getLaunchedAt());
-        // TODO duration not equals check
-        //Assertions.assertEquals(expectedDuration, BigDecimal.valueOf(persitedVideo.getDuration()).setScale(2, RoundingMode.DOWN));
+        Assertions.assertEquals(expectedDuration,
+                BigDecimal.valueOf(persitedVideo.getDuration()).setScale(2,
+                        RoundingMode.DOWN).doubleValue());
         Assertions.assertEquals(expectedOpened, persitedVideo.isOpened());
         Assertions.assertEquals(expectedFinished, persitedVideo.isPublished());
         Assertions.assertEquals(expectedRating, persitedVideo.getRating());
@@ -500,7 +534,23 @@ public class DefaultVideoGatewayTest {
 
     @Test
     public void givenAValidCastMember_whenCallFindAll_shouldReturnFilteredList() {
-        // TODO adding castmembers not working
+        mockVideos();
+        final var expectedPage = 0;
+        final var expectedPerPage = 10;
+        final var expectedTerms = "";
+        final var expectedSort = "title";
+        final var expectedDirection = "asc";
+        final var expectedTotal = 2;
+
+        final var query = new VideoSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort,
+                expectedDirection, Set.of(eva.getId()), Set.of(),
+                Set.of());
+        final var all = this.videoGateway.findAll(query);
+        Assertions.assertNotNull(all);
+        Assertions.assertEquals(expectedTotal, all.total());
+        Assertions.assertEquals(expectedPage, all.currentPage());
+        Assertions.assertEquals(expectedPerPage, all.perPage());
+        Assertions.assertEquals(expectedTotal, all.total());
     }
 
     @Test
@@ -651,9 +701,7 @@ public class DefaultVideoGatewayTest {
                 Fixture.rating(),
                 Set.of(lives.getId()),
                 Set.of(tech.getId()),
-                // TODO CASTMEMBER WITH A PROBLEM NO INSERITNG
-                Set.<CastMemberID>of()
-                //Set.of(eva.getId())
+                Set.of(eva.getId())
         ));
 
         videoGateway.create(Video.newVideo(
@@ -679,9 +727,7 @@ public class DefaultVideoGatewayTest {
                 Fixture.rating(),
                 Set.of(aulas.getId()),
                 Set.of(tech.getId()),
-                // TODO CASTMEMBER WITH A PROBLEM NO INSERITNG
-                Set.<CastMemberID>of()
-                //Set.of(mariana.getId())
+                Set.of(mariana.getId())
         ));
 
         videoGateway.create(Video.newVideo(
@@ -694,9 +740,7 @@ public class DefaultVideoGatewayTest {
                 Fixture.rating(),
                 Set.of(aulas.getId()),
                 Set.of(business.getId()),
-                // TODO CASTMEMBER WITH A PROBLEM NO INSERITNG
-                Set.<CastMemberID>of()
-                //Set.of(eva.getId())
+                Set.of(eva.getId())
         ));
     }
 }
