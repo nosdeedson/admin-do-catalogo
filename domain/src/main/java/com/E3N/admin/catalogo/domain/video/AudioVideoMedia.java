@@ -81,4 +81,8 @@ public class AudioVideoMedia extends ValueObject {
     public AudioVideoMedia pendingEncode(){
         return AudioVideoMedia.with(this.id, this.checksum, this.name, this.rawLocation, this.encodedLocation, MediaStatus.PENDING);
     }
+
+    public boolean isPendingEncode(){
+        return MediaStatus.PENDING == this.status;
+    }
 }

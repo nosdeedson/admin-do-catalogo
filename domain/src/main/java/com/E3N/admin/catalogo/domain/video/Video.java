@@ -3,15 +3,14 @@ package com.E3N.admin.catalogo.domain.video;
 import com.E3N.admin.catalogo.domain.AggregateRoot;
 import com.E3N.admin.catalogo.domain.castmember.CastMemberID;
 import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.events.DomainEvent;
 import com.E3N.admin.catalogo.domain.genre.GenreId;
 import com.E3N.admin.catalogo.domain.utils.InstantUtils;
 import com.E3N.admin.catalogo.domain.validation.ValidationHandler;
 
 import java.time.Instant;
 import java.time.Year;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @SuppressWarnings("all")
 public class Video extends AggregateRoot<VideoID> {
@@ -35,11 +34,26 @@ public class Video extends AggregateRoot<VideoID> {
     private Set<CastMemberID> castMembers;
 
     protected Video(
-            VideoID videoID, String title, String description, Year launchedAt, double duration, Rating rating, //
-            boolean opened, boolean published, Instant createdAt, Instant updatedAt, ImageMedia banner, //
-            ImageMedia thumbnail, ImageMedia thumbNailHalf, AudioVideoMedia trailer, AudioVideoMedia video, //
-            Set<CategoryID> categories, Set<GenreId> genres, Set<CastMemberID> castMembers) {
-        super(videoID);
+            final VideoID videoID,
+            final String title,
+            final String description,
+            final Year launchedAt,
+            final double duration,
+            final Rating rating,
+            final boolean opened,
+            final boolean published,
+            final Instant createdAt,
+            final Instant updatedAt,
+            final ImageMedia banner,
+            final ImageMedia thumbnail,
+            final ImageMedia thumbNailHalf,
+            final AudioVideoMedia trailer,
+            final AudioVideoMedia video,
+            final Set<CategoryID> categories,
+            final Set<GenreId> genres,
+            final Set<CastMemberID> castMembers,
+            final List<DomainEvent> events) {
+        super(videoID, events);
         this.title = title;
         this.description = description;
         this.launchedAt = launchedAt;
@@ -112,12 +126,14 @@ public class Video extends AggregateRoot<VideoID> {
     public Video updateTrailerMedia(final AudioVideoMedia trailer){
         this.trailer = trailer;
         this.updatedAt = InstantUtils.now();
+        onAudioVideoMediaUpdated(trailer);
         return this;
     }
 
     public Video updateVideoMedia(final AudioVideoMedia video){
         this.video = video;
         this.updatedAt = InstantUtils.now();
+        onAudioVideoMediaUpdated(video);
         return this;
     }
 
@@ -153,7 +169,8 @@ public class Video extends AggregateRoot<VideoID> {
                 null,
                 categories,
                 genres,
-                members
+                members,
+                null
         );
     }
 
@@ -195,7 +212,8 @@ public class Video extends AggregateRoot<VideoID> {
                 video,
                 categories,
                 genres,
-                members
+                members,
+                null
         );
     }
 
@@ -218,8 +236,8 @@ public class Video extends AggregateRoot<VideoID> {
                 video.getVideo().orElse(null),
                 new HashSet<>(video.getCategories()),
                 new HashSet<>(video.getGenres()),
-                new HashSet<>(video.getCastMembers())
-
+                new HashSet<>(video.getCastMembers()),
+                video.getDomainEvents()
         );
     }
 
@@ -311,7 +329,6 @@ public class Video extends AggregateRoot<VideoID> {
             getTrailer()
                     .ifPresent(media -> updateTrailerMedia(media.processing()));
         }
-
         return this;
     }
 
@@ -323,7 +340,12 @@ public class Video extends AggregateRoot<VideoID> {
             getTrailer()
                     .ifPresent(media -> updateTrailerMedia(media.completed(encodedPath)));
         }
-
         return this;
+    }
+
+    private void onAudioVideoMediaUpdated(final AudioVideoMedia media){
+        if (media != null && media.isPendingEncode()){
+            this.registerEvent(new VideoMediaCreated(getId().getValue(), media.rawLocation()));
+        }
     }
 }

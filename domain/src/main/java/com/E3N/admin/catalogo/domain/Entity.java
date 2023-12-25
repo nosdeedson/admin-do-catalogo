@@ -48,7 +48,7 @@ public abstract class Entity<ID extends Identifier> {
     }
 
     public List<DomainEvent> getDomainEvents() {
-        return domainEvents;
+        return Collections.unmodifiableList(domainEvents);
     }
 
     @Override

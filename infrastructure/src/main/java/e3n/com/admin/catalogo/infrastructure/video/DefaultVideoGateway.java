@@ -4,6 +4,8 @@ import com.E3N.admin.catalogo.domain.video.*;
 import com.E3N.admin.catalogo.domain.Identifier;
 import com.E3N.admin.catalogo.domain.pagination.Pagination;
 import com.E3N.admin.catalogo.domain.utils.CollectionsUtils;
+import e3n.com.admin.catalogo.infrastructure.configuration.annotations.VideoCreatedQueue;
+import e3n.com.admin.catalogo.infrastructure.services.EventService;
 import e3n.com.admin.catalogo.infrastructure.utils.SqlUtils;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoJpaEntity;
 import e3n.com.admin.catalogo.infrastructure.video.persistence.VideoRepository;
@@ -18,14 +20,17 @@ import java.util.Set;
 public class DefaultVideoGateway implements VideoGateway {
 
     private final VideoRepository videoRepository;
+    private final EventService eventService;
 
-    public DefaultVideoGateway(VideoRepository videoRepository) {
+    public DefaultVideoGateway(final VideoRepository videoRepository,
+                               @VideoCreatedQueue final EventService eventService) {
         this.videoRepository = videoRepository;
+        this.eventService = eventService;
     }
 
     @Override
     public Video create(Video video) {
-        return this.videoRepository.save(VideoJpaEntity.from(video)).toAggregate();
+        return save(video);
     }
 
     @Override
@@ -65,6 +70,12 @@ public class DefaultVideoGateway implements VideoGateway {
 
     @Override
     public Video update(Video video) {
-        return this.videoRepository.save(VideoJpaEntity.from(video)).toAggregate();
+        return save(video);
+    }
+
+    private Video save(final Video video){
+        final var result = this.videoRepository.save(VideoJpaEntity.from(video)).toAggregate();
+        result.publishDomainEvents(eventService::send);
+        return result;
     }
 }

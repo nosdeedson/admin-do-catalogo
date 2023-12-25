@@ -32,8 +32,8 @@ public class Main {
 //    }
 
 
-    @RabbitListener(queues = "video.encoded.queue")
-    public void dummyListener(){
-
-    }
+//    @RabbitListener(queues = "video.encoded.queue")
+//    public void dummyListener(){
+//
+//    }
 }
