@@ -8,7 +8,8 @@ buildscript {
 }
 
 plugins {
-    id 'java'
+    id 'java-conventions'
+    id 'java-library'
     id 'application'
     id 'org.springframework.boot' version '2.7.7'
     id 'io.spring.dependency-management' version '1.1.0'
@@ -16,15 +17,10 @@ plugins {
 }
 
 group = 'e3n.com.admin.catalogo.infraestructure'
-version = '1.0-SNAPSHOT'
 
-//bootJar {
-//    archiveBaseName 'application.jar'
-//    destinationDirectory.set(file("${rootProject.buildDir}/libs"))
-//}
-
-repositories {
-    mavenCentral()
+tasks.bootJar {
+    archiveFileName = 'application.jar'
+    destinationDirectory.set(file("${rootProject.buildDir}/libs"))
 }
 
 dependencies {
@@ -45,6 +41,10 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-amqp')
     implementation('com.fasterxml.jackson.module:jackson-module-afterburner')
 
+    implementation('org.yaml:snakeyaml:1.33') {
+        version { strictly("1.33") }
+    }
+
     testImplementation('org.flywaydb:flyway-core')
     testImplementation('org.flywaydb:flyway-mysql')
 
@@ -63,9 +63,4 @@ flyway {
     url = System.getenv('FLYWAY_DB') ?: 'jdbc:mysql://localhost:3306/admin_videos'
     user = System.getenv('FLYWAY_USER') ?: 'root'
     password = System.getenv('FLYWAY_PASS') ?: '123456'
-}
-
-
-test {
-    useJUnitPlatform()
 }
