@@ -27,6 +27,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -84,7 +85,7 @@ public class CategoryAPITest {
 
         response.andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.header().string("Content-type", MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.header().string("Location", "/categories/123"))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/categories/123"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo("123")));
 
         Mockito.verify(createCategoryUseCase, Mockito.times(1)).execute(
@@ -119,7 +120,7 @@ public class CategoryAPITest {
 
         //then
         response.andExpect(MockMvcResultMatchers.status().isUnprocessableEntity())
-                .andExpect(MockMvcResultMatchers.header().string("Location", Matchers.nullValue()))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, Matchers.nullValue()))
                 .andExpect(MockMvcResultMatchers.header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.erros", Matchers.hasSize(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.erros[0].message", Matchers.equalTo(expectedMessage)));
@@ -156,7 +157,7 @@ public class CategoryAPITest {
 
         // then
         response.andExpect(MockMvcResultMatchers.status().isUnprocessableEntity())
-                .andExpect(MockMvcResultMatchers.header().string("Location", Matchers.nullValue()))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, Matchers.nullValue()))
                 .andExpect(MockMvcResultMatchers.header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.erros", Matchers.hasSize(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.erros[0].message", Matchers.equalTo(expectedErrorMessage)));

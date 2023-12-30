@@ -27,6 +27,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -79,7 +80,7 @@ public class GenreAPITest {
         final var response = mvc.perform(request);
 
         response.andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.header().string("Location", "/genres/" + expectedId))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/genres/" + expectedId))
                 .andExpect(MockMvcResultMatchers.header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(expectedId)));
 
@@ -109,7 +110,7 @@ public class GenreAPITest {
         final var response = this.mvc.perform(request);
 
         response.andExpect(MockMvcResultMatchers.status().isUnprocessableEntity())
-                .andExpect(MockMvcResultMatchers.header().string("Location", Matchers.nullValue()))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, Matchers.nullValue()))
                 .andExpect(MockMvcResultMatchers.header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.erros", Matchers.hasSize(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.erros[0].message", Matchers.equalTo(expectedErrorMesage)));

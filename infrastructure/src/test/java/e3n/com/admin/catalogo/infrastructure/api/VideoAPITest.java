@@ -145,7 +145,7 @@ public class VideoAPITest {
         final var response = this.mvc.perform(request);
 
         response.andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.header().string("Location", "/videos/" + expectedId.getValue()))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/videos/" + expectedId.getValue()))
                 .andExpect(MockMvcResultMatchers.header().string("Content-type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(expectedId.getValue())));
 
@@ -231,7 +231,7 @@ public class VideoAPITest {
         final var response = this.mvc.perform(request);
 
         response.andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.header().string("Location", "/videos/" + expectedId.getValue()))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/videos/" + expectedId.getValue()))
                 .andExpect(MockMvcResultMatchers.header().string("Content-type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(expectedId.getValue())));
 
@@ -434,7 +434,7 @@ public class VideoAPITest {
         final var response = this.mvc.perform(request);
 
         response.andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.header().string("Location", "/videos/" + expectedId.getValue()))
+                .andExpect(MockMvcResultMatchers.header().string(HttpHeaders.LOCATION, "/videos/" + expectedId.getValue()))
                 .andExpect(MockMvcResultMatchers.header().string("Content-type", MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(expectedId.getValue())));
         final var captor = ArgumentCaptor.forClass(UpdateVideoCommand.class);
