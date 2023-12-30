@@ -4,10 +4,9 @@ import org.springframework.data.jpa.domain.Specification;
 
 
 @SuppressWarnings("all")
-public class SpecificationUtils {
+public final class SpecificationUtils {
 
-    private SpecificationUtils() {
-    }
+    private SpecificationUtils() {}
 
     public static <T> Specification<T> like(final String prop, final String term) {
         final var termToUpperCase = SqlUtils.upper(term);

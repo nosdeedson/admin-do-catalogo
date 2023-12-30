@@ -25,7 +25,7 @@ import java.util.Set;
 public class GetVideoByIdUseCaseTest extends UseCaseTest {
 
     @InjectMocks
-    private DefaultGetVidoByIdUseCase useCase;
+    private DefaultGetVideoByIdUseCase useCase;
 
     @Mock
     private VideoGateway videoGateway;

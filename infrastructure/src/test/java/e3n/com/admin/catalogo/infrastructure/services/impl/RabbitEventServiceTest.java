@@ -1,7 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.services.impl;
 
 import com.E3N.admin.catalogo.domain.video.VideoMediaCreated;
-import e3n.com.admin.catalogo.infrastructure.AmqpTest;
+import e3n.com.admin.catalogo.AmqpTest;
 import e3n.com.admin.catalogo.infrastructure.configuration.annotations.VideoCreatedQueue;
 import e3n.com.admin.catalogo.infrastructure.configuration.json.Json;
 import e3n.com.admin.catalogo.infrastructure.services.EventService;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @AmqpTest
-public class RabbitEventService {
+public class RabbitEventServiceTest {
 
     private static final String LISTENER = "video.created";
 

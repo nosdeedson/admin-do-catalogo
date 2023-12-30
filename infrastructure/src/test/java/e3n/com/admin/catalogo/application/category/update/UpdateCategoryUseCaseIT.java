@@ -3,6 +3,7 @@ package e3n.com.admin.catalogo.application.category.update;
 
 import com.E3N.admin.catalogo.application.category.update.UpdateCategoryCommand;
 import com.E3N.admin.catalogo.application.category.update.UpdateCategoryUseCase;
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
 import e3n.com.admin.catalogo.IntegrationTest;
 import com.E3N.admin.catalogo.domain.category.Category;
 import com.E3N.admin.catalogo.domain.category.CategoryGateway;
@@ -43,7 +44,7 @@ public class UpdateCategoryUseCaseIT {
         final var expectedId = category.getId();
 
         final var command = new UpdateCategoryCommand(expectedId.getValue(), expectedName, expectedDescription, expectedIsActive);
-        final var output = useCase.execute(command).get();
+        final var output = useCase.execute(command);
 
         Assertions.assertEquals(expectedId.getValue(), output.id());
 
@@ -70,9 +71,9 @@ public class UpdateCategoryUseCaseIT {
 
         final var command =
                 UpdateCategoryCommand.wit(expectedId.getValue(), expectedName, expectedDescription, expectedIsActive);
-        final var notification = useCase.execute(command).getLeft();
+        final var notification = Assertions.assertThrows( NotificationException.class, () -> useCase.execute(command));
         Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, notification.firstError().message());
+        Assertions.assertEquals(expectedErrorMessage, notification.getErrors().get(0).message());
         Mockito.verify(gateway, Mockito.times(0)).update(Mockito.any());
     }
 
@@ -86,7 +87,7 @@ public class UpdateCategoryUseCaseIT {
         final var expectedIsActive = false;
         final var expectedId = category.getId();
         final var command = UpdateCategoryCommand.wit(expectedId.getValue(), expectedName, expectedDescription, expectedIsActive);
-        final var output = useCase.execute(command).get();
+        final var output = useCase.execute(command);
 
         Assertions.assertNotNull(output);
         Assertions.assertNotNull(output.id());
@@ -111,16 +112,14 @@ public class UpdateCategoryUseCaseIT {
         final var expectedIsActive = true;
         final var expectedId = category.getId();
         final var expectedErrorMesage = "gateway error";
-        final var expectedErrorCount = 1;
 
         final var command = UpdateCategoryCommand.wit(expectedId.getValue(), expectedName, expectedDescription, expectedIsActive);
 
         Mockito.doThrow(new IllegalStateException(expectedErrorMesage))
                 .when(gateway).update(Mockito.any());
 
-        final var notification = useCase.execute(command).getLeft();
-        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMesage, notification.firstError().message());
+        final var notification = Assertions.assertThrows( IllegalStateException.class, () -> useCase.execute(command));
+        Assertions.assertEquals(expectedErrorMesage, notification.getMessage());
 
         final var afterModification = repository.findById(expectedId.getValue()).get();
 

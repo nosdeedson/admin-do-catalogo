@@ -49,13 +49,8 @@ public class CategoryController implements CategoryAPI {
                 input.active()
         );
 
-        final Function<Notification, ResponseEntity<?>> onError = notification -> ResponseEntity.unprocessableEntity().body(notification);
-
-        final Function<CreateCategoryOutput, ResponseEntity<?>> onSuccess = output ->
-                ResponseEntity.created(URI.create("/categories/"+ output.id())).body(output);
-
-        return this.createCategoryUseCase.execute(command).fold(onError, onSuccess);
-
+        final var output = createCategoryUseCase.execute(command);
+        return ResponseEntity.created(URI.create("/categories/"+output.id())).body(output);
     }
 
     @Override
@@ -73,14 +68,8 @@ public class CategoryController implements CategoryAPI {
     @Override
     public ResponseEntity<?> updateById(String id, UpdateCategoryRequest input) {
         final var command = UpdateCategoryCommand.wit(id, input.name(), input.description(), input.isActive());
-
-        final Function<Notification, ResponseEntity<?>> onError = notification ->
-                ResponseEntity.unprocessableEntity().body(notification);
-
-        final Function<UpdateCategoryOutput, ResponseEntity<?>> onSuccess =
-                ResponseEntity::ok;
-
-        return updateCategoryUseCase.execute(command).fold(onError, onSuccess);
+        final var output = updateCategoryUseCase.execute(command);
+        return ResponseEntity.ok(output);
     }
 
     @Override

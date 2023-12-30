@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.flywaydb:flyway-mysql:8.5.10'
+        classpath 'org.flywaydb:flyway-mysql:9.11.0'
     }
 }
 
@@ -32,6 +32,8 @@ dependencies {
     implementation(project(":application"))
     implementation('mysql:mysql-connector-java')
 
+    implementation('com.google.guava:guava:31.1-jre')
+
     implementation('org.springdoc:springdoc-openapi-webmvc-core:1.6.14')
     implementation('org.springdoc:springdoc-openapi-ui:1.6.14')
 
@@ -43,11 +45,12 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-amqp')
     implementation('com.fasterxml.jackson.module:jackson-module-afterburner')
 
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('org.flywaydb:flyway-core')
+    testImplementation('org.flywaydb:flyway-mysql')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 
     testRuntimeOnly('com.h2database:h2')
-    implementation 'io.vavr:vavr:0.10.4'
 
     testImplementation('org.springframework.amqp:spring-rabbit-test:2.4.8')
 //    testImplementation('org.testcontainers:testcontainers:1.17.6')

@@ -1,4 +1,4 @@
-package e3n.com.admin.catalogo.infrastructure;
+package e3n.com.admin.catalogo;
 
 import e3n.com.admin.catalogo.IntegrationTest;
 import e3n.com.admin.catalogo.infrastructure.configuration.WebServerConfig;
@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-@ActiveProfiles({"test-integration", "development"})
+@ActiveProfiles({ "development"})
 @SpringBootTest(classes = WebServerConfig.class)
 @Tag("integrationTest")
 public @interface AmqpTest {

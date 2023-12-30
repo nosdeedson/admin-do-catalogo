@@ -3,9 +3,11 @@ package e3n.com.admin.catalogo.application.category.create;
 
 import com.E3N.admin.catalogo.application.category.create.CreateCategoryCommand;
 import com.E3N.admin.catalogo.application.category.create.CreateCategoryUseCase;
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
 import e3n.com.admin.catalogo.IntegrationTest;
 import com.E3N.admin.catalogo.domain.category.CategoryGateway;
 import e3n.com.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
+import jdk.jshell.spi.ExecutionControl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -37,7 +39,7 @@ public class CreateCategoryUseCaseIT {
 
         final var command = CreateCategoryCommand.with(expectedName, expectedDescription, expectedIsActive);
 
-        final var outPut = createCategoryUseCase.execute(command).get();
+        final var outPut = createCategoryUseCase.execute(command);
 
         Assertions.assertNotNull(outPut);
         Assertions.assertNotNull(outPut.id());
@@ -68,10 +70,10 @@ public class CreateCategoryUseCaseIT {
 
         final var command = CreateCategoryCommand.with(expectedName, expectedDescription, expectedIsActive);
 
-        final var notification = createCategoryUseCase.execute(command).getLeft();
+        final var notification = Assertions.assertThrows(NotificationException.class, () -> createCategoryUseCase.execute(command));
 
         Assertions.assertEquals(expectedErros, notification.getErrors().size());
-        Assertions.assertEquals(expectedMessage, notification.firstError().message());
+        Assertions.assertEquals(expectedMessage, notification.getErrors().get(0).message());
 
         Assertions.assertEquals(0, categoryRepository.count());
         Mockito.verify(categoryGateway, Mockito.times(0)).create(any());
@@ -87,7 +89,7 @@ public class CreateCategoryUseCaseIT {
 
         final var command = CreateCategoryCommand.with(expectedName, expectedDescription, expectedIsActive);
 
-        final var output = createCategoryUseCase.execute(command).get();
+        final var output = createCategoryUseCase.execute(command);
         Assertions.assertNotNull(output);
         Assertions.assertEquals(1, categoryRepository.count());
 
@@ -106,7 +108,6 @@ public class CreateCategoryUseCaseIT {
         final String expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
-        final var expectedErrorCount = 1;
         final var expectedErrorMessage = "Gateway error";
 
         Assertions.assertEquals(0, categoryRepository.count());
@@ -116,8 +117,7 @@ public class CreateCategoryUseCaseIT {
         Mockito.doThrow(new IllegalStateException(expectedErrorMessage))
                 .when(categoryGateway).create(Mockito.any());
 
-        final var notification = createCategoryUseCase.execute(command).getLeft();
-        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, notification.firstError().message());
+        final var notification = Assertions.assertThrows(IllegalStateException.class, () -> createCategoryUseCase.execute(command));
+        Assertions.assertEquals(expectedErrorMessage, notification.getMessage());
     }
 }

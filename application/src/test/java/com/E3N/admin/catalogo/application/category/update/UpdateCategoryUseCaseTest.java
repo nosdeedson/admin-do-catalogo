@@ -4,6 +4,7 @@ import com.E3N.admin.catalogo.application.UseCaseTest;
 import com.E3N.admin.catalogo.domain.category.Category;
 import com.E3N.admin.catalogo.domain.category.CategoryGateway;
 import com.E3N.admin.catalogo.domain.category.CategoryID;
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -56,7 +57,7 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
         Mockito.when(categoryGateway.update(Mockito.any()))
                 .thenAnswer(returnsFirstArg());
 
-        final var output = useCase.execute(command).get();
+        final var output = useCase.execute(command);
 
         Assertions.assertNotNull(output);
         Assertions.assertNotNull(output.id());
@@ -93,8 +94,7 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
         Mockito.when(categoryGateway.findById(Mockito.eq(expectedId)))
                 .thenReturn(Optional.of(Category.with(category)));
-
-        final var notification = useCase.execute(command).getLeft();
+        final var notification = Assertions.assertThrows(NotificationException.class, () -> useCase.execute(command));
         Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, notification.getErrors().get(0).message());
         Mockito.verify(categoryGateway, Mockito.times(0)).update(Mockito.any());
@@ -124,7 +124,7 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
         Assertions.assertTrue(category.isActive());
         Assertions.assertNull(category.getDeletedAt());
 
-        final var output = useCase.execute(command).get();
+        final var output = useCase.execute(command);
         Assertions.assertNotNull(output);
         Assertions.assertNotNull(output.id());
         Mockito.verify(categoryGateway, Mockito.times(1)).findById(expectedId);
@@ -147,8 +147,6 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
         final var expectedId = category.getId();
-
-        final var expectedErrorCount = 1;
         final var expectedErrorMessage = "Gateway error";
 
         final var command = UpdateCategoryCommand.wit(
@@ -164,9 +162,8 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
         Mockito.when(categoryGateway.update(Mockito.any()))
                 .thenThrow(new IllegalStateException(expectedErrorMessage));
 
-        final var notification = useCase.execute(command).getLeft();
-        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, notification.getErrors().get(0).message());
+        final var notification = Assertions.assertThrows(IllegalStateException.class, () -> useCase.execute(command));
+        Assertions.assertEquals(expectedErrorMessage, notification.getMessage());
 
         Mockito.verify(categoryGateway, Mockito.times(1))
                 .update(Mockito.argThat( updateCategory ->

@@ -12,8 +12,7 @@ public class RabbitEventService implements EventService {
     private final String routingKey;
     private final RabbitOperations operations;
 
-    public RabbitEventService( final String exchange, final String routingKey,
-                              final RabbitOperations operations) {
+    public RabbitEventService(String exchange, String routingKey, RabbitOperations operations) {
         this.exchange = Objects.requireNonNull(exchange);
         this.routingKey = Objects.requireNonNull(routingKey);
         this.operations = Objects.requireNonNull(operations);
@@ -21,7 +20,6 @@ public class RabbitEventService implements EventService {
 
     @Override
     public void send(Object event) {
-        this.operations.convertAndSend(this.exchange, this.routingKey,
-                Json.writeValueAsString(event));
+        this.operations.convertAndSend(this.exchange, this.routingKey, Json.writeValueAsString(event));
     }
 }

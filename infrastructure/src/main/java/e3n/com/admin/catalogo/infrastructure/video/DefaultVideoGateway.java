@@ -20,12 +20,13 @@ import java.util.Set;
 public class DefaultVideoGateway implements VideoGateway {
 
     private final VideoRepository videoRepository;
-    private final EventService eventService;
+    //private final EventService eventService;
 
-    public DefaultVideoGateway(final VideoRepository videoRepository,
-                               @VideoCreatedQueue final EventService eventService) {
+    public DefaultVideoGateway(final VideoRepository videoRepository
+                               //,@VideoCreatedQueue final EventService eventService
+    ) {
         this.videoRepository = videoRepository;
-        this.eventService = eventService;
+        //this.eventService = eventService;
     }
 
     @Override
@@ -75,7 +76,7 @@ public class DefaultVideoGateway implements VideoGateway {
 
     private Video save(final Video video){
         final var result = this.videoRepository.save(VideoJpaEntity.from(video)).toAggregate();
-        result.publishDomainEvents(eventService::send);
+        //result.publishDomainEvents(eventService::send);
         return result;
     }
 }

@@ -12,8 +12,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
-import static io.vavr.API.*;
-
 public class Fixture {
 
     private static final Random random = new Random();
@@ -169,11 +167,12 @@ public class Fixture {
         }
 
         public static Resource resource(final VideoMediaType type) {
-            final String contentType = Match(type).of(
-                    Case($(List(VideoMediaType.VIDEO, VideoMediaType.TRAILER)::contains), "video/mp4"),
-                    Case($(), "image/jpg")
-            );
-
+            String contentType = "";
+            switch (type){
+                case VIDEO:
+                case TRAILER: contentType = "video/mp4";
+                default: contentType = "image/jpg";
+            }
             final String checksum = IdUtils.uuid();
             final byte[] content = "Conteudo".getBytes();
 

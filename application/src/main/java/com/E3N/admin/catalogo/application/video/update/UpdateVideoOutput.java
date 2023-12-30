@@ -5,7 +5,7 @@ import com.E3N.admin.catalogo.domain.video.Video;
 public record UpdateVideoOutput(
         String id
 ) {
-    public static UpdateVideoOutput from(final Video video){
-        return new UpdateVideoOutput(video.getId().getValue());
+    public static UpdateVideoOutput from(final String videoid){
+        return new UpdateVideoOutput(videoid);
     }
 }

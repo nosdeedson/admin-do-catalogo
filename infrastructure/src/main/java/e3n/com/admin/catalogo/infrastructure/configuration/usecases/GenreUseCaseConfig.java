@@ -2,8 +2,8 @@ package e3n.com.admin.catalogo.infrastructure.configuration.usecases;
 
 import com.E3N.admin.catalogo.application.genre.create.CreateGenreUseCase;
 import com.E3N.admin.catalogo.application.genre.create.DefaultCreateGenreUseCase;
-import com.E3N.admin.catalogo.application.genre.delelte.DefaultDeleteGenreUseCase;
-import com.E3N.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.delete.DefaultDeleteGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.delete.DeleteGenreUseCase;
 import com.E3N.admin.catalogo.application.genre.retrieve.get.DefaultGetGenreByIdUseCase;
 import com.E3N.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
 import com.E3N.admin.catalogo.application.genre.retrieve.list.DefaultListGenreUseCase;

@@ -12,8 +12,6 @@ import java.time.Year;
 import java.util.Set;
 import java.util.UUID;
 
-import static io.vavr.API.*;
-
 public final class Fixture {
 
     private static final Faker FAKER = new Faker();
@@ -137,10 +135,15 @@ public final class Fixture {
         }
 
         public static Resource resource(final VideoMediaType type) {
-            final String contentType = Match(type).of(
-                    Case($(List(VideoMediaType.VIDEO, VideoMediaType.TRAILER)::contains), "video/mp4"),
-                    Case($(), "image/jpg")
-            );
+            String contentType = "";
+            switch (type){
+                case TRAILER:
+                case VIDEO:{
+                    contentType = "video/np4";
+                    break;
+                }
+                default: contentType = "image/jpg";
+            }
 
             final String checksum = IdUtils.uuid();
             final byte[] content = "Conteudo".getBytes();

@@ -2,7 +2,7 @@ package e3n.com.admin.catalogo.infrastructure.api.controllers;
 
 import com.E3N.admin.catalogo.application.genre.create.CreateGenreCommand;
 import com.E3N.admin.catalogo.application.genre.create.CreateGenreUseCase;
-import com.E3N.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.delete.DeleteGenreUseCase;
 import com.E3N.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
 import com.E3N.admin.catalogo.application.genre.retrieve.list.ListGenreUseCase;
 import com.E3N.admin.catalogo.application.genre.update.UpdateGenreCommand;

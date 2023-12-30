@@ -70,7 +70,7 @@ public class DefaultUpdateVideoUseCase extends UpdateVideoUseCase{
             throw new NotificationException("Could not update Aggregate video", notification);
         }
         final var updated = update(command, video);
-        return UpdateVideoOutput.from(updated);
+        return UpdateVideoOutput.from(updated.getId().getValue());
 
     }
 

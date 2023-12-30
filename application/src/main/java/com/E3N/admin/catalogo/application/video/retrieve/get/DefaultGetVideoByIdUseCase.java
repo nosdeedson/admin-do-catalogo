@@ -7,11 +7,11 @@ import com.E3N.admin.catalogo.domain.video.VideoID;
 
 import java.util.Objects;
 
-public class DefaultGetVidoByIdUseCase extends GetVideoByIdUseCase{
+public class DefaultGetVideoByIdUseCase extends GetVideoByIdUseCase{
 
     private final VideoGateway videoGateway;
 
-    public DefaultGetVidoByIdUseCase(VideoGateway videoGateway) {
+    public DefaultGetVideoByIdUseCase(VideoGateway videoGateway) {
         this.videoGateway = Objects.requireNonNull(videoGateway);
     }
 

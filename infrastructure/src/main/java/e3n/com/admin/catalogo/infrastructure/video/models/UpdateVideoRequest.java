@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Set;
 
-public record CreateVideoRequest(
+public record UpdateVideoRequest(
         @JsonProperty("title") String title,
         @JsonProperty("description") String description,
-        @JsonProperty("duration") Double duration,
+        @JsonProperty("duration ") Double duration,
         @JsonProperty("year_launched") Integer yearLaunched,
         @JsonProperty("opened") Boolean opened,
         @JsonProperty("published") Boolean published,
         @JsonProperty("rating") String rating,
-        @JsonProperty("cast_members") Set<String> members,
+        @JsonProperty("members") Set<String> members,
         @JsonProperty("categories") Set<String> categories,
         @JsonProperty("genres") Set<String> genres
 ) {

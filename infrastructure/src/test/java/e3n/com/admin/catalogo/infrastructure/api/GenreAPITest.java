@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import e3n.com.admin.catalogo.ControllerTest;
 import com.E3N.admin.catalogo.application.genre.create.CreateGenreOutput;
 import com.E3N.admin.catalogo.application.genre.create.CreateGenreUseCase;
-import com.E3N.admin.catalogo.application.genre.delelte.DeleteGenreUseCase;
+import com.E3N.admin.catalogo.application.genre.delete.DeleteGenreUseCase;
 import com.E3N.admin.catalogo.application.genre.retrieve.get.GenreOutput;
 import com.E3N.admin.catalogo.application.genre.retrieve.get.GetGenreByIdUseCase;
 import com.E3N.admin.catalogo.application.genre.retrieve.list.GenreListOutput;

@@ -1,5 +1,7 @@
 package e3n.com.admin.catalogo.infrastructure.api;
 
+import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
+import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import e3n.com.admin.catalogo.ControllerTest;
 import com.E3N.admin.catalogo.application.category.create.CreateCategoryOutput;
@@ -18,10 +20,8 @@ import com.E3N.admin.catalogo.domain.exceptions.DomainException;
 import com.E3N.admin.catalogo.domain.exceptions.NotFoundException;
 import com.E3N.admin.catalogo.domain.pagination.Pagination;
 import com.E3N.admin.catalogo.domain.validation.Error;
-import com.E3N.admin.catalogo.domain.validation.handler.Notification;
 import e3n.com.admin.catalogo.infrastructure.category.models.CreateCategoryRequest;
 import e3n.com.admin.catalogo.infrastructure.category.models.UpdateCategoryRequest;
-import io.vavr.API;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -71,7 +71,7 @@ public class CategoryAPITest {
         final var input = new CreateCategoryRequest(expectedName, expectedDescription, expecterIsActive);
 
         Mockito.when(createCategoryUseCase.execute(Mockito.any()))
-                .thenReturn(API.Right(CreateCategoryOutput.from("123")));
+                .thenReturn(CreateCategoryOutput.from("123"));
 
         // when
         final var request = MockMvcRequestBuilders.post("/categories")
@@ -107,7 +107,7 @@ public class CategoryAPITest {
                 new CreateCategoryRequest(expectedName, expectedDescription, expectedIsActive);
 
         Mockito.when(createCategoryUseCase.execute(Mockito.any()))
-                .thenReturn(API.Left(Notification.create(new Error(expectedMessage))));
+                .thenThrow(new NotificationException("Error", Notification.create(new Error(expectedMessage))));
 
         //when
         final var request = MockMvcRequestBuilders.post("/categories")
@@ -121,8 +121,8 @@ public class CategoryAPITest {
         response.andExpect(MockMvcResultMatchers.status().isUnprocessableEntity())
                 .andExpect(MockMvcResultMatchers.header().string("Location", Matchers.nullValue()))
                 .andExpect(MockMvcResultMatchers.header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errors", Matchers.hasSize(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errors[0].message", Matchers.equalTo(expectedMessage)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.erros", Matchers.hasSize(1)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.erros[0].message", Matchers.equalTo(expectedMessage)));
 
         Mockito.verify(createCategoryUseCase, Mockito.times(1)).execute(Mockito.argThat(( cmd ->
                 Objects.equals(expectedName, cmd.name())
@@ -166,8 +166,6 @@ public class CategoryAPITest {
                         && Objects.equals(expectedDescription, cmd.description())
                         && Objects.equals(expectedIsActive, cmd.isActive())
         ));
-
-
     }
 
     @Test
@@ -229,7 +227,7 @@ public class CategoryAPITest {
         final var expectedIsActive = true;
 
         Mockito.when(updateCategoryUseCase.execute(Mockito.any()))
-                .thenReturn(API.Right(UpdateCategoryOutput.from(expectedId)));
+                .thenReturn(UpdateCategoryOutput.from(expectedId));
 
         final var command =
                 new UpdateCategoryCommand(expectedId, expectedName, expectedDescription, expectedIsActive);
@@ -262,7 +260,7 @@ public class CategoryAPITest {
         final var expectedErrorMessage = "'name' should not be null";
 
         Mockito.when(updateCategoryUseCase.execute(Mockito.any()))
-                .thenReturn(API.Left(Notification.create(new Error(expectedErrorMessage))));
+                .thenThrow(new NotificationException("Error", Notification.create(new Error(expectedErrorMessage))));
 
         final var command =
                 new UpdateCategoryRequest(expectedName, expectedDescription, expectedIsActive);
@@ -277,8 +275,8 @@ public class CategoryAPITest {
 
         response.andExpect(MockMvcResultMatchers.status().isUnprocessableEntity())
                 .andExpect(MockMvcResultMatchers.header().string("Content-Type", MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errors", Matchers.hasSize(expectedErrorCount)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errors[0].message", Matchers.equalTo(expectedErrorMessage)));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.erros", Matchers.hasSize(expectedErrorCount)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.erros[0].message", Matchers.equalTo(expectedErrorMessage)));
 
         Mockito.verify(updateCategoryUseCase, Mockito.times(1)).execute(Mockito.argThat(
                 cmd -> Objects.equals(expectedName, cmd.name())

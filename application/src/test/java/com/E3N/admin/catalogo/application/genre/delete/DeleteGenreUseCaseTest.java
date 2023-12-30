@@ -1,7 +1,6 @@
 package com.E3N.admin.catalogo.application.genre.delete;
 
 import com.E3N.admin.catalogo.application.UseCaseTest;
-import com.E3N.admin.catalogo.application.genre.delelte.DefaultDeleteGenreUseCase;
 import com.E3N.admin.catalogo.domain.genre.Genre;
 import com.E3N.admin.catalogo.domain.genre.GenreGateway;
 import com.E3N.admin.catalogo.domain.genre.GenreId;
