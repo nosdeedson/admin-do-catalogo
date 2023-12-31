@@ -16,3 +16,6 @@
 
 ## Para saber todos os comandos disponíveis: [Documentation click here]( https://documentation.red-gate.com/fd/ )
 
+## usar docker compose com profile command
+docker compose --profile nameProfile up -d
+## onde o nome do profile deve ter sido criado no docker-compose.yml

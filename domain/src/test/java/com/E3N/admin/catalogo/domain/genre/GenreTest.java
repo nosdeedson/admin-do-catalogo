@@ -1,5 +1,6 @@
 package com.E3N.admin.catalogo.domain.genre;
 
+import com.E3N.admin.catalogo.domain.UnitTest;
 import com.E3N.admin.catalogo.domain.category.CategoryID;
 import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
 import com.E3N.admin.catalogo.domain.genre.Genre;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenreTest{
+public class GenreTest extends UnitTest {
 
     @Test
     public void givenValidParams_whenCallNewGenre_shouldInstantiateAGenre(){

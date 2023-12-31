@@ -1,12 +1,13 @@
 package com.E3N.admin.catalogo.domain.castmember;
 
+import com.E3N.admin.catalogo.domain.UnitTest;
 import com.E3N.admin.catalogo.domain.castmember.CastMember;
 import com.E3N.admin.catalogo.domain.castmember.CastMemberType;
 import com.E3N.admin.catalogo.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CastMemberTest{
+public class CastMemberTest extends UnitTest {
 
     @Test
     public void givenAValidParams_whenCallsNewMember_thenInstantiateACastMember() {
