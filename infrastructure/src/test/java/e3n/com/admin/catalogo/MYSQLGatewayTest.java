@@ -28,6 +28,7 @@ import java.lang.annotation.*;
 @DataJpaTest
 @ComponentScan(
         basePackages = "e3n.com.admin.catalogo",
+        useDefaultFilters = false,
         includeFilters = {
             @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*MySQLGateway")
 })
