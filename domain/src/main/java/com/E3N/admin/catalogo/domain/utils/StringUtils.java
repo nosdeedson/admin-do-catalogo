@@ -35,7 +35,7 @@ public final class StringUtils {
                 + minLenght
                 + " and "
                 + maxLengnth
-                + " characteres";
+                + " characters";
     }
     private static String createMessage(final String nameValue, final String message){
         return "'" +

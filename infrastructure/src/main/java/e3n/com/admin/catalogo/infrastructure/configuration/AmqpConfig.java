@@ -32,8 +32,8 @@ public class AmqpConfig {
 
         @Bean
         @VideoEvents
-        Exchange videoEventsExchange(@VideoCreatedQueue QueueProperties propos) {
-            return new DirectExchange(propos.getExchange());
+        Exchange videoEventsExchange(@VideoCreatedQueue QueueProperties props) {
+            return new DirectExchange(props.getExchange());
         }
 
         @Bean

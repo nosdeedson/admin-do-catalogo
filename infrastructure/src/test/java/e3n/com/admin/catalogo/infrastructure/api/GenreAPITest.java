@@ -2,6 +2,7 @@ package e3n.com.admin.catalogo.infrastructure.api;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import e3n.com.admin.catalogo.ApiTest;
 import e3n.com.admin.catalogo.ControllerTest;
 import com.E3N.admin.catalogo.application.genre.create.CreateGenreOutput;
 import com.E3N.admin.catalogo.application.genre.create.CreateGenreUseCase;
@@ -74,6 +75,7 @@ public class GenreAPITest {
                 .thenReturn(CreateGenreOutput.from(expectedId));
 
         final var request = MockMvcRequestBuilders.post("/genres")
+                .with(ApiTest.GENRES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writeValueAsString(command));
 
@@ -104,6 +106,7 @@ public class GenreAPITest {
                 .thenThrow(new NotificationException("Error", Notification.create(new Error(expectedErrorMesage))));
 
         final var request = MockMvcRequestBuilders.post("/genres")
+                .with(ApiTest.GENRES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(command));
 
@@ -136,6 +139,7 @@ public class GenreAPITest {
                 .thenReturn(GenreOutput.from(genre));
 
         final var request = MockMvcRequestBuilders.get("/genres/{id}", expectedId.getValue())
+                .with(ApiTest.GENRES_JWT)
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -163,6 +167,7 @@ public class GenreAPITest {
                 .thenThrow(NotFoundException.with(Genre.class, expectedId));
 
         final var request = MockMvcRequestBuilders.get("/genres/{id}", expectedId.getValue())
+                .with(ApiTest.GENRES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON);
 
@@ -191,6 +196,7 @@ public class GenreAPITest {
                 .thenReturn(UpdateGenreOutput.from(genre));
 
         final var request = MockMvcRequestBuilders.put("/genres/{id}", expectedId)
+                .with(ApiTest.GENRES_JWT)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.mapper.writeValueAsString(updateRequest));
 
@@ -223,6 +229,7 @@ public class GenreAPITest {
                 .thenThrow(new NotificationException("Error", Notification.create(new Error(expectedErrorMessage))));
 
         final var request = MockMvcRequestBuilders.put("/genres/{id}", expectedId)
+                .with(ApiTest.GENRES_JWT)
                 .content(this.mapper.writeValueAsString(updateRequest))
                 .contentType(MediaType.APPLICATION_JSON);
 
@@ -248,6 +255,7 @@ public class GenreAPITest {
                 .when(deleteGenreUseCase).execute(Mockito.any());
 
         final var request = MockMvcRequestBuilders.delete("/genres/{id}", expectedId)
+                .with(ApiTest.GENRES_JWT)
                 .accept(MediaType.APPLICATION_JSON);
 
         final var response = this.mvc.perform(request);
@@ -275,6 +283,7 @@ public class GenreAPITest {
                 .thenReturn(new Pagination<>(expectedPage, expectedPerPage, expectedTotal, expectedItems));
 
         final var request = MockMvcRequestBuilders.get("/genres")
+                .with(ApiTest.GENRES_JWT)
                 .queryParam("page", String.valueOf(expectedPage))
                 .queryParam("perPage", String.valueOf(expectedPerPage))
                 .queryParam("sort", String.valueOf(expectedSort))

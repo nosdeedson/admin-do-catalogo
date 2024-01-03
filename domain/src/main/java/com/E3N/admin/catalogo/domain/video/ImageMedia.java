@@ -12,10 +12,10 @@ public class ImageMedia extends ValueObject {
     private final  String location;
 
     private ImageMedia(String id, String checksum, String name, String location) {
-        this.id = id;
-        this.checksum = checksum;
-        this.name = name;
-        this.location = location;
+        this.id = Objects.requireNonNull(id);
+        this.checksum = Objects.requireNonNull(checksum);
+        this.name = Objects.requireNonNull(name);
+        this.location = Objects.requireNonNull(location);
     }
 
     public static ImageMedia with(String checksum, String name, String location){

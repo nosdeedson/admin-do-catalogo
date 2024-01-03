@@ -2,8 +2,13 @@ plugins{
     id("groovy-gradle-plugin")
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+java{
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+//sourceCompatibility = JavaVersion.VERSION_17
+//targetCompatibility = JavaVersion.VERSION_17
 
 group = 'e3n.com.admin.catalogo'
 version = '1.0-SNAPSHOT'

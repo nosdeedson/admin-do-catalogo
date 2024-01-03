@@ -36,6 +36,9 @@ public class VideoValidator extends Validator {
         if (this.video.getDescription().length() > DESCRIPTION_MAX_LENGTH){
             this.validationHandler().append(new Error("'description' should not be greater than 4000"));
         }
+        if (this.video.getDescription().isEmpty()){
+            this.validationHandler().append(new Error("'description' should not be empty"));
+        }
     }
 
 

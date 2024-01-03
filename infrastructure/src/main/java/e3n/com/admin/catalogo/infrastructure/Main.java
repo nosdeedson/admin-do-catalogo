@@ -16,7 +16,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         System.out.println("STARNTING...");
-        System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "development");
+        System.setProperty(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "sandbox");
         SpringApplication.run(WebServerConfig.class, args);
     }
 

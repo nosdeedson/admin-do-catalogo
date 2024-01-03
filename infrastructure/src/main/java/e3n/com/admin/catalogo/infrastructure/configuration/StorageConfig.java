@@ -18,7 +18,7 @@ public class StorageConfig {
     }
 
     @Bean
-    @Profile({"development", "test-integration"})
+    @Profile({"development", "test-integration", "sandbox"})
     public StorageService storageService(){
         return new InMemoryStorageService();
     }

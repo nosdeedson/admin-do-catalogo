@@ -16,7 +16,7 @@ public class EventConfig {
 
     @Bean
     @VideoCreatedQueue
-    @Profile({"test-integration", "development"})
+    @Profile({ "development", "sandbox"})
     EventService localVideoCreatedEventService() {
         return new InMemoryEventService();
     }

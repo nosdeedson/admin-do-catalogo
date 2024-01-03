@@ -67,7 +67,7 @@ public class GenreTest extends UnitTest {
                 """;
         final var expectedIsActive = true;
         final var expectedErrorCount = 1;
-        final var expectedErrorMessage = "'name' must be between 1 and 255 characteres";
+        final var expectedErrorMessage = "'name' must be between 1 and 255 characters";
         final var notification = Assertions.assertThrows(NotificationException.class, () ->{
            Genre.newGenre(expectedName, expectedIsActive);
         });

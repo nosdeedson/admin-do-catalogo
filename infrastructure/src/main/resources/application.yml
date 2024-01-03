@@ -45,11 +45,21 @@ spring:
       # Para aumentar a performance ao máximo, desabilitamos o auto-commit e o open-in-view.
       # https://vladmihalcea.com/why-you-should-always-use-hibernate-connection-provider_disables_autocommit-for-resource-local-jpa-transactions/
   rabbitmq:
-    dynamic: ${amqp.admin.auto-create}
-    host: ${amqp.host}
-    port: ${amqp.port}
-    username: ${amqp.username}
-    password: ${amqp.password}
+    dynamic: ${amqp.admin.auto-create:true}
+    host: ${amqp.host:localhost}
+    port: ${amqp.port:5672}
+    username: ${amqp.username:adm_videos}
+    password: ${amqp.password:123456}
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 100GB
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${keycloak.host}/realms/${keycloak.realm}/protocol/openid-connect/certs
+          issuer-uri: ${keycloak.host}/realms/${keycloak.realm}
 
 storage:
   catalogo-videos:

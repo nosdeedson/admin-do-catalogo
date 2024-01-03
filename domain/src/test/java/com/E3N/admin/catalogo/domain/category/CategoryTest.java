@@ -68,7 +68,7 @@ public class CategoryTest extends UnitTest {
     public void givenAnInvalidNameLengthLessThan3_whenCallNewCategoryAndValidate_thenShouldReceiveError(){
         final var expectedName = "Fi ";
         final var expectedErrorCount = 1;
-        final var expectedErrorMessage = "'name' must be between 3 and 255 characteres";
+        final var expectedErrorMessage = "'name' must be between 3 and 255 characters";
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
 
@@ -89,7 +89,7 @@ public class CategoryTest extends UnitTest {
                 manutenção das novas proposições.
                 """;
         final var expectedErrorCount = 1;
-        final var expectedErrorMessage = "'name' must be between 3 and 255 characteres";
+        final var expectedErrorMessage = "'name' must be between 3 and 255 characters";
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
 
